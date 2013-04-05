@@ -59,3 +59,5 @@ group :test do
 end
 
 gem "bcrypt-ruby", :require => "bcrypt"
+
+gem 'expedia'
