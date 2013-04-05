@@ -11,7 +11,7 @@ development:
       hosts:
         - dharma.mongohq.com:10027
       username: belkiii
-      password: delcafmar0
+      password: ZXlJJFy99lM7nMS
       options:
         # Change whether the session persists in safe mode by default.
         # (default: false)
