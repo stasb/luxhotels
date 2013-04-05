@@ -1,0 +1,24 @@
+%h1 Enter a new hotel
+= form_for @hotel do |f|
+  - if @hotel.errors.any?
+    .text_error
+      %p
+        Form is invalid
+        %p
+          %ul.text-error
+            - for message in @hotel.errors.full_messages
+              %li.text-error= message
+  %p
+    = f.label :id
+    = f.text_field :hotel_id, :class => "span3"
+  %p
+    = f.label :name
+    = f.text_field :name, :class => "span3"
+  %p
+    = f.label :address
+    = f.text_field :address, :class => "span3"
+  %p
+    = f.file_field :image, :class => "span3"
+  %p
+    = f.submit "Submit", class: "btn btn-primary"
+

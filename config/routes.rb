@@ -1,4 +1,9 @@
 Luxhotels::Application.routes.draw do
+
+  resources :hotels
+
+  root :to => 'hotels#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

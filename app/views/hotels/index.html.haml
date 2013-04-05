@@ -1,0 +1,12 @@
+%h1 Hotels
+%ul
+  - if @hotels.count > 0
+    - @hotels.each do |hotel|
+      %li
+        %a{:href => hotel_path(hotel)}
+          = hotel.name
+          %img{:src => hotel.image}
+  - else
+    There are no hotels.
+%br
+= button_to "Create a hotel", new_hotel_path, :method => "get", :class => "btn btn-large btn-primary"

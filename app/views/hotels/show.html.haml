@@ -1,0 +1,12 @@
+%h1
+  = @hotel.name
+%p more hotel info:
+%p
+  %b ID:
+  = @hotel.hotel_id
+  %br
+  %b Address:
+  = @hotel.address
+  %br
+%img{:src => @hotel.image}
+
