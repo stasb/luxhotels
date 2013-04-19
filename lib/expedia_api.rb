@@ -1,4 +1,3 @@
-
 module SearchHotel
 
   def GetHotels(options)

@@ -1,0 +1,9 @@
+%h1 Admin Control Page
+%p
+  Some text here
+= link_to "Back", root_path
+%h2 Database Builders
+%h3 Hotels
+.hotel_buttons
+  = button_to "Populate with 50 4+ Star Hotels From Bangkok", {}, :class => 'btn btn-success'
+  = button_to "Delete All Hotels", {},  :class => 'btn btn-danger'
