@@ -11,7 +11,7 @@ development:
       hosts:
         - dharma.mongohq.com:10027
       username: belkiii
-      password: ZXlJJFy99lM7nMS
+      password: luxhotels88
       options:
         # Change whether the session persists in safe mode by default.
         # (default: false)
@@ -33,7 +33,7 @@ development:
   options:
     # Configuration for whether or not to allow access to fields that do
     # not have a field definition on the model. (default: true)
-    # allow_dynamic_fields: true
+    allow_dynamic_fields: true
 
     # Enable the identity map, needed for eager loading. (default: false)
     # identity_map_enabled: false
