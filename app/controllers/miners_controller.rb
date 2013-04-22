@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class MinersController < ApplicationController
 
   def new
     @miner = Miner.new
@@ -9,8 +9,8 @@ class AdminController < ApplicationController
   end
 
   def mine_hotels
-    @admin = Admin.new(params[:admin])
-    if @admin.valid?
+    @miner = Miner.new(params[:miner])
+    if @miner.valid?
       Hotel.build_hotels
     else
       render '/admin/index'

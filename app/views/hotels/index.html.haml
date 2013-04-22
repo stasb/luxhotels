@@ -1,8 +1,19 @@
 %h1 Hotels
 %br
 = button_to "Create a hotel", new_hotel_path, :method => "get", :class => "btn btn-large btn-primary"
-%h1 API Results
+%h1 All Hotels
+%p.lead
+  = @hotels.count
+  hotels
+.hotel-list
+  - @hotels.each do |f|
+    %b Name:
+    = f.name
+    %b Rating:
+    = f.hotelRating
+    %br
+
 %br
-%p
-  Some hotel content goes here.
 = link_to "Admin Interface", admin_path
+%br
+%br

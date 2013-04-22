@@ -2,7 +2,6 @@ require 'json'
 require 'open-uri'
 
 class HotelsController < ApplicationController
-  include SearchHotel
 
   def new
     @hotel = Hotel.new
@@ -26,11 +25,16 @@ class HotelsController < ApplicationController
   end
 
   def mine_hotels
-    Hotel.build_hotels
+    @hotel = Hotel.new
+    if @hotel.valid?
+      Hotel.build_hotels
+    else
+      render 'admin/index'
+    end
   end
 
   def destroy_hotels
-
+    Hotel.remove_all
   end
 
   def mine_descriptions

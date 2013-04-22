@@ -5,5 +5,37 @@
 %h2 Database Builders
 %h3 Hotels
 .hotel_buttons
-  = button_to "Populate with 50 4+ Star Hotels From Bangkok", {}, :class => 'btn btn-success'
-  = button_to "Delete All Hotels", {},  :class => 'btn btn-danger'
+  = button_to "Populate with 50 4+ Star Hotels From Bangkok", {:action => "mine_hotels", :controller => "miners"} , :class => 'btn btn-success'
+  = button_to "Delete All Hotels", {:action => "destroy_hotels", :controller => "miners"},  :class => 'btn btn-danger'
+
+%br
+%br
+/ = form_tag({:controller => "hotels", :action => "mine_hotels"}, :method => "post") do
+/   %p
+/     .row
+/       .span12
+/         %label City Name
+/         = text_field_tag :citySelect, nil,  placeholder: "e.g. Bangkok"
+/     .row
+/       .span12
+/         %label Maximum Hotels
+/         = text_field_tag :countSelect, nil,  placeholder: "e.g. 30"
+/     .row
+/       .span12
+/         = submit_tag "Build Hotels", class: "btn btn-success"
+
+= form_for @miner, :url => url_for(:controller => 'miners', :action => 'mine_hotels') do |f|
+  - if @miner.errors.any?
+    .error_messages
+      %h2
+        = pluralize(@miner.errors.count, "error")
+        prohibited this message from being saved:
+      %ul
+        - @miner.errors.full_messages.each do |msg|
+          %li= msg
+  = f.label :citySelect, "City Name"
+  = f.text_field :citySelect, placeholder: "e.g. Bangkok"
+  = f.label :limitSelect, "Numerical Limit"
+  = f.text_field :limitSelect, placeholder: "e.g. 50"
+  = f.submit "Build Hotels"
+

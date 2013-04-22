@@ -1,3 +1,5 @@
+include SearchHotel
+
 class Hotel
   include Mongoid::Document
   field :hotelId, type: Integer
@@ -28,15 +30,15 @@ class Hotel
   field :deepLink, type: String
   mount_uploader :image, HotelImageUploader
 
-  def self.build_hotels
+  def self.build_hotels(citySelect, limitSelect)
     api_hotels = GetHotels({:customerIpAddress => "60.241.64.60",\
                              :customerUserAgent => "Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.4b)\
                              Gecko/20030516 Mozilla Firebird/0.6",\
-                             :city => "Bangkok", :countryCode => "TH", :numberOfResults => "50", :minStarRating => "4.0"})
+                             :city => citySelect, :countryCode => "TH", :numberOfResults => "200", :minStarRating => "4.0"})
 
     hotel_objects = api_hotels.body['HotelListResponse']['HotelList']['HotelSummary']
 
-    hotel_objects.first(50).each do |f|
+    hotel_objects.first(limitSelect).each do |f|
       existing_hotels = Hotel.where(hotelId: f.fetch("hotelId")).count
       if existing_hotels == 0
         existing_thumb = f["thumbNailUrl"].to_s

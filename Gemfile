@@ -8,6 +8,7 @@ gem 'sqlite3'
 
 gem 'mongoid', '~> 3.0.0'
 gem 'bson_ext'
+gem 'active_attr'
 
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
