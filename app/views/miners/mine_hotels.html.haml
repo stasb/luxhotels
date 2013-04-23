@@ -1,3 +1,9 @@
-%h1 Hotel data has now been mined.
+%h2
+  = @build_results
+  hotels built in
+  = @miner.citySelect
+  that have a star rating of
+  = @miner.starRating
+  or higher.
 %br
-= link_to "Go back to home.", root_url
+= link_to "Back to Admin Page.", admin_url
