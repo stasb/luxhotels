@@ -8,7 +8,11 @@ Luxhotels::Application.routes.draw do
 
   match "/admin/build_all" => "miners#mine_hotels"
 
-  match "/admin/delete_all" => "miners#destroy_hotels"
+  match "/admin/delete_all" => "miners#destroy_all_hotels"
+
+  match "/admin/delete_hotels" => "miners#destroy_hotels"
+
+  match "admin/construct_hotels" => "miners#construct_hotels"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

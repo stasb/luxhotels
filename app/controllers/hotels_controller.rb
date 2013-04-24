@@ -24,22 +24,4 @@ class HotelsController < ApplicationController
     @hotels = Hotel.all
   end
 
-  def mine_hotels
-    @hotel = Hotel.new
-    if @hotel.valid?
-      Hotel.build_hotels
-    else
-      render 'admin/index'
-    end
-  end
-
-  def destroy_hotels
-    Hotel.remove_all
-  end
-
-  def mine_descriptions
-
-  end
-
-
 end

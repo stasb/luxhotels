@@ -8,10 +8,12 @@
 .hotel-list
   - @hotels.each do |f|
     %b Name:
-    = f.name
+    = f.HotelSummary['name']
+    ,
     %b Rating:
-    = f.hotelRating
+    = f.HotelSummary['hotelRating']
     %br
+    %img{:src => f.HotelImages['HotelImage'][1]['thumbnailUrl']}
 
 %br
 = link_to "Admin Interface", admin_path

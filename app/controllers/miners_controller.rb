@@ -1,20 +1,33 @@
 class MinersController < ApplicationController
 
-  def new
-    @miner = Miner.new
-  end
-
-  def index
-    @miner = Miner.new
-  end
-
   def mine_hotels
     @miner = Miner.new(params[:miner])
     if @miner.valid?
-      Hotel.build_hotels
+      @build_results = HotelPreview.build_hotels(@miner.citySelect, @miner.limitSelect, @miner.countryCode,\
+                        @miner.starRating)
     else
       render '/admin/index'
     end
+  end
+
+  def construct_hotels
+    Hotel.build_complete_hotels
+  end
+
+  def destroy_hotels
+    @miner = Miner.new(params[:miner])
+    if @miner.valid?
+      HotelPreview.where(city: @miner.citySelect).gte(hotelRating: @miner.starRating,\
+                                                       countryCode: @miner.countryCode).\
+                                                       limit(@miner.limitSelect).destroy
+    else
+      render '/admin/index'
+    end
+  end
+
+  def destroy_all_hotels
+    Hotel.all.destroy
+    HotelPreview.all.destroy
   end
 
 end

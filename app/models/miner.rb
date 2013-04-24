@@ -3,8 +3,10 @@ class Miner
 
   attribute :citySelect
   attribute :limitSelect
+  attribute :countryCode
+  attribute :starRating
 
-  attr_accessible :citySelect, :limitSelect
+  attr_accessible :citySelect, :limitSelect, :countryCode, :starRating
 
-  validates_presence_of :citySelect, :limitSelect
+  validates_presence_of :citySelect, :limitSelect, :countryCode, :starRating
 end
