@@ -118,8 +118,6 @@ production:
     # Configuration for whether or not to allow access to fields that do
     # not have a field definition on the model. (default: true)
     allow_dynamic_fields: true
-    skip_version_check: true
-    safe: true
 
     # Enable the identity map, needed for eager loading. (default: false)
     # identity_map_enabled: false
@@ -147,7 +145,7 @@ production:
 
     # Skip the database version check, used when connecting to a db without
     # admin access. (default: false)
-    # skip_version_check: false
+    skip_version_check: true
 
     # User Active Support's time zone in conversions. (default: true)
     # use_activesupport_time_zone: true
