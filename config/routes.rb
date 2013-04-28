@@ -1,5 +1,7 @@
 Luxhotels::Application.routes.draw do
 
+  devise_for :users
+
   resources :hotels
 
   root :to => "hotels#index"

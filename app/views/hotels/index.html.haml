@@ -1,19 +1,38 @@
+- if flash[:notice]
+  %p.alert.alert-info
+    = flash[:notice]
+  %br
+- elsif flash[:error]
+  %p.alert.alert-error
+    = flash[:error]
+  %br
 %h1 Hotels
+- if user_signed_in?
+  %p
+    Currently signed in as
+    = current_user.email
+    - if current_user.admin == true
+      %span.text-success
+        \[admin]
+  = link_to "Log out", destroy_user_session_path, :method => "delete"
+  %br
 %br
 = button_to "Create a hotel", new_hotel_path, :method => "get", :class => "btn btn-large btn-primary"
 %h1 All Hotels
 %p.lead
   = @hotels.count
   hotels
-.hotel-list
-  - @hotels.each do |f|
-    %b Name:
-    = f.HotelSummary['name']
-    ,
-    %b Rating:
-    = f.HotelSummary['hotelRating']
-    %br
-    %img{:src => f.HotelImages['HotelImage'][1]['thumbnailUrl']}
+.row
+  .span12
+    .hotel-list
+      - @hotels.each do |f|
+        %b Name:
+        = f.HotelSummary['name']
+        ,
+        %b Rating:
+        = f.HotelSummary['hotelRating']
+        %br
+        %img{:src => f.HotelImages['HotelImage'][1]['url'], :style => "width: 200px; height: auto;"}
 
 %br
 = link_to "Admin Interface", admin_path

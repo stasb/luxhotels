@@ -1,13 +1,55 @@
 %h1 Admin Control Page
 = link_to "Front Page", root_path
 
-%br
-%br
+- if user_signed_in?
+  %p
+    Currently signed in as
+    = current_user.email
+    - if current_user.admin == true
+      %span.text-success
+        \[admin]
+  = link_to "Log out", destroy_user_session_path, :method => "delete"
+  %br
+
 %br
 .row
   .span12
     .divider-div
+%br
+.row
+  .span6
+    %h2 Database Info
+    %table.table.table-striped
+      %thead
+        %tr
+          %th City
+          %th Country
+          %th Hotels
+          %th Star Ratings
+      %tbody
+        - city_array = Array.new
+        - Hotel.all.each do |f|
+          - city_array << f.HotelSummary['city']
+        - city_array.uniq.each do |f|
+          %tr
+            %td
+              = f.to_s
+            %td
+              = Hotel.where("HotelSummary.city" => f).first.HotelSummary['countryCode']
+            %td
+              = Hotel.where("HotelSummary.city" => f).count
+            %td
+              - star_ratings = Array.new
+              - Hotel.where("HotelSummary.city" => f).each do |f|
+                - star_ratings << f.HotelSummary['hotelRating']
+              = star_ratings.uniq.join(",").to_s
 
+  .span6
+    / empty space
+
+.row
+  .span12
+    .divider-div
 .row.primary-controls
   .span6
     %h2 Build Hotel Database

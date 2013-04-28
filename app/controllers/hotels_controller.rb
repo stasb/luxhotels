@@ -21,7 +21,7 @@ class HotelsController < ApplicationController
   end
 
   def index
-    @hotels = Hotel.all
+    @hotels = Hotel.limit(10)
   end
 
 end

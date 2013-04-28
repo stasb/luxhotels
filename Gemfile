@@ -18,6 +18,7 @@ gem 'fog', '~> 1.3.1'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'client_side_validations'
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
