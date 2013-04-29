@@ -42,7 +42,7 @@
               - star_ratings = Array.new
               - Hotel.where("HotelSummary.city" => f).each do |f|
                 - star_ratings << f.HotelSummary['hotelRating']
-              = star_ratings.uniq.join(",").to_s
+              = star_ratings.uniq.join(", ").to_s
 
   .span6
     / empty space
@@ -81,7 +81,7 @@
             = f.text_field :starRating, placeholder: "e.g. 4.5"
         .row
           .span12
-            = f.submit "Build Hotel Previews", class: "btn btn-success"
+            = f.submit "Build Hotels", class: "btn btn-success"
   .span6
     %h2 Destroy Hotels
     = form_for @miner, :url => url_for(:controller => 'miners', :action => 'destroy_hotels') do |f|
@@ -121,7 +121,7 @@
 %br
 .row
   .span12
-    = button_to "Construct All Hotels", admin_construct_hotels_path, :class => "btn btn-info"
+    = button_to "Reconstruct All Hotels", admin_construct_hotels_path, :class => "btn btn-info"
 
 .row
   .span12

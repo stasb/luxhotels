@@ -22,9 +22,11 @@ class MinersController < ApplicationController
   def destroy_hotels
     @miner = Miner.new(params[:miner])
     if @miner.valid?
-      HotelPreview.where(city: @miner.citySelect).gte(hotelRating: @miner.starRating,\
-                                                       countryCode: @miner.countryCode).\
+      HotelPreview.where(city: @miner.citySelect).gte(hotelRating: @miner.starRating).\
                                                        limit(@miner.limitSelect).destroy
+
+      Hotel.where("HotelSummary.city" => @miner.citySelect).gte("HotelSummary.hotelRating" => @miner.starRating.to_f).\
+        limit(@miner.limitSelect).destroy
     else
       render '/admin/index'
     end
