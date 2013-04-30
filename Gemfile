@@ -10,8 +10,14 @@ gem 'mongoid', '~> 3.0.0'
 gem 'bson_ext'
 gem 'active_attr'
 
+gem 'aws'
+gem 'subexec'
+gem 'delayed_job_mongoid'
+gem 'daemons'
+
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave_direct'
 gem 'mini_magick'
 gem 'fog', '~> 1.3.1'
 

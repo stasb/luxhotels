@@ -19,30 +19,33 @@
 .row
   .span6
     %h2 Database Info
-    %table.table.table-striped
-      %thead
-        %tr
-          %th City
-          %th Country
-          %th Hotels
-          %th Star Ratings
-      %tbody
-        - city_array = Array.new
-        - Hotel.all.each do |f|
-          - city_array << f.HotelSummary['city']
-        - city_array.uniq.each do |f|
+    - if Hotel.empty?
+      %p There are no hotels
+    - else
+      %table.table.table-striped
+        %thead
           %tr
-            %td
-              = f.to_s
-            %td
-              = Hotel.where("HotelSummary.city" => f).first.HotelSummary['countryCode']
-            %td
-              = Hotel.where("HotelSummary.city" => f).count
-            %td
-              - star_ratings = Array.new
-              - Hotel.where("HotelSummary.city" => f).each do |f|
-                - star_ratings << f.HotelSummary['hotelRating']
-              = star_ratings.uniq.join(", ").to_s
+            %th City
+            %th Country
+            %th Hotels
+            %th Star Ratings
+        %tbody
+          - city_array = Array.new
+          - Hotel.all.each do |f|
+            - city_array << f.HotelSummary['city']
+          - city_array.uniq.each do |f|
+            %tr
+              %td
+                = f.to_s
+              %td
+                = Hotel.where("HotelSummary.city" => f).first.HotelSummary['countryCode']
+              %td
+                = Hotel.where("HotelSummary.city" => f).count
+              %td
+                - star_ratings = Array.new
+                - Hotel.where("HotelSummary.city" => f).each do |f|
+                  - star_ratings << f.HotelSummary['hotelRating']
+                = star_ratings.uniq.join(", ").to_s
 
   .span6
     / empty space

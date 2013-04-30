@@ -1,7 +1,7 @@
 class Hotel
   include Mongoid::Document
 
-  mount_uploader :image, HotelImageUploader
+  mount_uploader :thumb_image, HotelImageUploader
 
   def self.build_complete_hotels
 
@@ -17,6 +17,7 @@ class Hotel
         hotel_information = api_info.body['HotelInformationResponse']
         hotel = Hotel.create(hotel_information)
 
+        hotel.process_image(hotel)
         # image_hash = hotel_information['HotelImages']['HotelImage']
 
         # image_hash.each do |image|
@@ -28,5 +29,12 @@ class Hotel
     end
 
   end
+
+  def process_image(hotel)
+    first_image = hotel['HotelImages']['HotelImage'][0]['url']
+    hotel.remote_thumb_image_url = first_image.to_s
+    hotel.save
+  end
+  handle_asynchronously :process_image
 
 end
