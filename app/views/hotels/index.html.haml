@@ -6,7 +6,6 @@
   %p.alert.alert-error
     = flash[:error]
   %br
-%h1 Hotels
 - if user_signed_in?
   %p
     Currently signed in as
@@ -15,26 +14,15 @@
       %span.text-success
         \[admin]
   = link_to "Log out", destroy_user_session_path, :method => "delete"
+  = link_to "admin page", admin_path
   %br
-%br
-= button_to "Create a hotel", new_hotel_path, :method => "get", :class => "btn btn-large btn-primary"
-%h1 All Hotels
-%p.lead
-  = @hotels.count
-  hotels
-.row
+.row-fluid
   .span12
-    .hotel-list
-      - @hotels.each do |f|
-        %b Name:
-        = f.HotelSummary['name']
-        ,
-        %b Rating:
-        = f.HotelSummary['hotelRating']
-        %br
-        %img{:src => f.HotelImages['HotelImage'][1]['url'], :style => "width: 200px; height: auto;"}
-
-%br
-= link_to "Admin Interface", admin_path
-%br
-%br
+    .header
+      %h1 Luxhotels
+    .row-fluid.all-content
+      .span3.side-bar
+      .span9.main-content
+        .all-deals
+          = render 'deal_modules'
+    .footer

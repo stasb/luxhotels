@@ -69,3 +69,6 @@ end
 gem "bcrypt-ruby", :require => "bcrypt"
 
 gem 'expedia'
+gem 'nokogiri'
+gem 'libxml-ruby'
+gem 'sanitize'
