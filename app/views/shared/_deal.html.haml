@@ -2,7 +2,7 @@
   .info-part
     .heading
       %p
-        = hotel.HotelSummary['name']
+        = CGI::unescapeHTML(hotel.HotelSummary['name'])
         %span
           \-
           = hotel.HotelSummary['city']
