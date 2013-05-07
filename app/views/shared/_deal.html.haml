@@ -1,22 +1,36 @@
 .deal-container
-  .heading
-    %p
-      Le Meridien Bangkok
-      %span
-        \- in Bangkok (Bang Rak)
-  .deal-body
-    .thumb
-      %img{:src => hotel.image.thumb}
-    .deal-info
-      .rating
-        %p
-          TripAdvisor:
-          %span
-            = hotel.HotelSummary['tripAdvisorRating']
-      .description
-        %p
-          - raw_description = CGI::unescapeHTML(hotel.HotelDetails['propertyDescription']).gsub(/<[\/p]+>/, "")
-          - sanitized = Sanitize.clean(raw_description, :remove_contents => true)
-          = truncate(sanitized, :length => 200)
-
+  .info-part
+    .heading
+      %p
+        = hotel.HotelSummary['name']
+        %span
+          \-
+          = hotel.HotelSummary['city']
+          \-
+          = hotel.HotelSummary['hotelRating']
+          Stars
+    .deal-body
+      .thumb
+        %img{:src => hotel.image.thumb}
+      .deal-info
+        .rating
+          %p
+            TripAdvisor:
+            %span
+              = hotel.HotelSummary['tripAdvisorRating']
+        .description
+          %p
+            - raw_description = CGI::unescapeHTML(hotel.HotelDetails['propertyDescription']).gsub(/<[\/p]+>/, "")
+            - sanitized = Sanitize.clean(raw_description, :remove_contents => true)
+            = truncate(sanitized, :length => 148)
+  .action
+    .price
+      %p
+        from
+        %span
+          USD$
+          = number_with_precision(hotel.HotelSummary['lowRate'], :precision => 0)
+    .button
+      %p Book
   .divider
+

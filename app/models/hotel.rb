@@ -1,6 +1,8 @@
 class Hotel
   include Mongoid::Document
 
+  paginates_per 10
+
   mount_uploader :image, HotelImageUploader
   mount_uploader :thumb_image, HotelImageUploader
 

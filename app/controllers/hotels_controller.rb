@@ -21,7 +21,7 @@ class HotelsController < ApplicationController
   end
 
   def index
-    @hotels = Hotel.limit(10)
+    @hotels = Hotel.page(params[:page])
   end
 
 end

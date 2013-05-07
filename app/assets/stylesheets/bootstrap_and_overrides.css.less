@@ -34,6 +34,7 @@
 
 body {
   background-color: #ededed;
+  background-image:url('back_pattern.png')
 }
 
 .danger-box {
@@ -74,9 +75,13 @@ body {
 }
 
 .main-content {
-  height: 800px;
+  height: 100%;
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.pagination {
+  margin-left: 18px;
 }
 
 .footer {
@@ -100,3 +105,73 @@ body {
 }
 }
 
+.deal-container {
+  margin: 20px 0px 0px 20px;
+}
+
+.deal-body {
+  font-size: 12px;
+  margin-top: 18px;
+
+  .thumb {
+    float: left;
+}
+
+  .deal-info {
+    margin-left: 10px;
+    width: 470px;
+    float: left;
+}
+
+  .rating {
+    font-weight: bold;
+
+    span {
+      font-weight: normal;
+    }
+}
+
+  .description {
+    margin-top: 35px;
+}
+}
+
+.action {
+  position: relative;
+  left: 530px;
+  bottom: 143px;
+  width: 130px;
+
+  .price {
+    font-size: 12px;
+    font-weight: normal;
+    display: inline;
+
+    span {
+      font-size: 18px;
+      font-weight: bold;
+      display: inline;
+      padding-left: 5px;
+  }
+}
+  .button {
+    width: 116px;
+    height: 36px;
+    background-color: black;
+    position: absolute;
+
+    p {
+      font-size: 18px;
+      color: #ffffff;
+      padding: 7px 0px 0px 35px;
+      font-weight: normal;
+  }
+}
+
+}
+
+.divider {
+  width: 646px;
+  height: 1px;
+  background-color: #b9b9b9;
+}
