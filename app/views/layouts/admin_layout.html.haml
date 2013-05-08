@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title Luxhotels | Admin
+    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Quicksand:300,400,700"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container-fluid
+      = yield

@@ -17,7 +17,7 @@ class HotelsController < ApplicationController
   end
 
   def show
-    @hotel =  Hotel.find(params[:id])
+    @hotel = Hotel.find(params[:id])
   end
 
   def index

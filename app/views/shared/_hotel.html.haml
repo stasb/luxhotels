@@ -1,8 +1,8 @@
-.deal-container
+.hotel-container
   .info-part
     .heading
       %p
-        = CGI::unescapeHTML(hotel.HotelSummary['name'])
+        = link_to CGI::unescapeHTML(hotel.HotelSummary['name']), hotel_path(hotel)
         %span
           \-
           = hotel.HotelSummary['city']

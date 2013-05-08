@@ -10,6 +10,7 @@ class AdminController < ApplicationController
 
   def index
     @miner = Miner.new
+    render :layout => 'admin_layout'
   end
 
 end

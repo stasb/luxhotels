@@ -1,29 +1,5 @@
-- if flash[:notice]
-  %p.alert.alert-info
-    = flash[:notice]
-  %br
-- elsif flash[:error]
-  %p.alert.alert-error
-    = flash[:error]
-  %br
-- if user_signed_in?
-  %p
-    Currently signed in as
-    = current_user.email
-    - if current_user.admin == true
-      %span.text-success
-        \[admin]
-  = link_to "Log out", destroy_user_session_path, :method => "delete"
-  = link_to "admin page", admin_path
-  %br
-.row-fluid
-  .span12
-    .header
-      %h1 Luxhotels
-    .row-fluid.all-content
-      .span3.side-bar
-      .span9.main-content
-        .all-deals
-          = render 'deal_modules'
-        = paginate @hotels
-    .footer
+.span3.side-bar
+.span9.main-content
+  .all-deals
+    = render 'hotel_modules'
+  = paginate @hotels
