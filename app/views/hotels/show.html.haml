@@ -7,7 +7,7 @@
 .span9.main-content.hotel-view
   .hotel-content
     %h3
-      = @hotel.HotelSummary['name']
+      = CGI::unescapeHTML(@hotel.HotelSummary['name'])
       %span
         \-
         = @hotel.HotelSummary['city']
@@ -32,9 +32,13 @@
       %br
       - room_types = @hotel.RoomTypes['RoomType']
       %ul
+      - if room_types.class == Array
         - room_types.each do |type|
           %li
-            = type['description']
+            = type['description'].to_s
+      - else
+        %li
+          = room_types['description']
     .hotel-divider
     .hotel-description
       %b
@@ -44,3 +48,10 @@
       %br
 
 .span3.side-bar
+  .side-bar-content
+    .price
+      %p
+        from
+        %span
+          USD$
+          = number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)
