@@ -24,4 +24,9 @@ class HotelsController < ApplicationController
     @hotels = Hotel.page(params[:page])
   end
 
+  def destroy
+    @hotel = Hotel.find(params[:id])
+    @hotel.destroy
+    redirect_to root_path, :notice => "Hotel deleted."
+  end
 end
