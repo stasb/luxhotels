@@ -4,54 +4,57 @@
         overlayBackground: '#e52828'
     });
     Galleria.run('#galleria');
-.span9.main-content.hotel-view
-  .hotel-content
-    %h3
-      = CGI::unescapeHTML(@hotel.HotelSummary['name'])
-      %span
-        \-
-        = @hotel.HotelSummary['city']
 
-    .hotel-divider
-    .image-carousel
-      #galleria
-        - images = @hotel.HotelImages['HotelImage']
-        - images.each do |image|
-          %img{:src => image['url']}
-    .hotel-divider
-    .hotel-description
-      = CGI::unescapeHTML(@hotel.HotelDetails['propertyDescription']).html_safe
-    .hotel-divider
-    .hotel-description
-      %b Hotel Policy:
-      %br
-      = CGI::unescapeHTML(@hotel.HotelDetails['hotelPolicy']).html_safe
-    .hotel-divider
-    .hotel-description
-      %b Room Types:
-      %br
-      - room_types = @hotel.RoomTypes['RoomType']
-      %ul
-      - if room_types.class == Array
-        - room_types.each do |type|
-          %li
-            = type['description'].to_s
-      - else
-        %li
-          = room_types['description']
-    .hotel-divider
-    .hotel-description
-      %b
-        Number of floors: #{@hotel.HotelDetails['numberOfFloors']},
-      %b
-        Number of rooms: #{@hotel.HotelDetails['numberOfRooms']}
-      %br
+.container-fluid
+  .row-fluid
+    .span9.main-content.hotel-view
+      .hotel-content
+        %h3
+          = CGI::unescapeHTML(@hotel.HotelSummary['name'])
+          %span
+            \-
+            = @hotel.HotelSummary['city']
 
-.span3.side-bar
-  .side-bar-content
-    .price
-      %p
-        from
-        %span
-          USD$
-          = number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)
+        .hotel-divider
+        .image-carousel
+          #galleria
+            - images = @hotel.HotelImages['HotelImage']
+            - images.each do |image|
+              %img{:src => image['url']}
+        .hotel-divider
+        .hotel-description
+          = CGI::unescapeHTML(@hotel.HotelDetails['propertyDescription']).html_safe
+        .hotel-divider
+        .hotel-description
+          %b Hotel Policy:
+          %br
+          = CGI::unescapeHTML(@hotel.HotelDetails['hotelPolicy']).html_safe
+        .hotel-divider
+        .hotel-description
+          %b Room Types:
+          %br
+          - room_types = @hotel.RoomTypes['RoomType']
+          %ul
+          - if room_types.class == Array
+            - room_types.each do |type|
+              %li
+                = type['description'].to_s
+          - else
+            %li
+              = room_types['description']
+        .hotel-divider
+        .hotel-description
+          %b
+            Number of floors: #{@hotel.HotelDetails['numberOfFloors']},
+          %b
+            Number of rooms: #{@hotel.HotelDetails['numberOfRooms']}
+          %br
+
+    .span3.side-bar
+      .side-bar-content
+        .price
+          %p
+            from
+            %span
+              USD$
+              = number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)

@@ -9,10 +9,10 @@ class HotelsController < ApplicationController
 
   def create
     @hotel = Hotel.create(params[:hotel])
-    if @hotel.save
-      redirect_to hotel_path(@hotel), :notice => "new hotel created"
+    if @hotel.with(safe: true).save
+      redirect_to hotel_path(@hotel), notice: 'new hotel created'
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -26,7 +26,7 @@ class HotelsController < ApplicationController
 
   def destroy
     @hotel = Hotel.find(params[:id])
-    @hotel.destroy
-    redirect_to root_path, :notice => "Hotel deleted."
+    @hotel.with(safe: true).destroy
+    redirect_to root_path, notice: 'Hotel deleted.'
   end
 end

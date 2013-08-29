@@ -3,10 +3,17 @@ class Hotel
 
   paginates_per 10
 
+  before_create :build_city
+
   mount_uploader :image, HotelImageUploader
   mount_uploader :thumb_image, HotelImageUploader
 
-  def self.build_complete_hotels
+  field :name, type: String
+  index( { name: 1}, { unique: true, name: 'name_index' } )
+
+  belongs_to :city
+
+  def self.build_complete_hotels(city_name, country_code)
 
     HotelPreview.each do |h|
       if Hotel.where("HotelSummary.hotelId" => h.hotelId).count == 0
@@ -17,20 +24,12 @@ class Hotel
                                 :locale => "en_US", :currencyCode => "USD", :hotelId => h.hotelId,\
                                 :options => "0"})
 
-        hotel_information = api_info.body['HotelInformationResponse']
-        hotel = Hotel.create(hotel_information)
-
+        hotel_data = api_info.body['HotelInformationResponse']
+        city = City.build_city(city_name, country_code)
+        hotel = city.hotels.create(hotel_data)
         hotel.process_image(hotel)
-        # image_hash = hotel_information['HotelImages']['HotelImage']
-
-        # image_hash.each do |image|
-        #   hotel.remote_image_url = image['url'].to_s
-        #   hotel.save
-        # end
       end
-
     end
-
   end
 
   def process_image(hotel)
@@ -40,6 +39,4 @@ class Hotel
     hotel['thumb_image'] = hotel.image_url(:thumb)
     hotel.save
   end
-  handle_asynchronously :process_image
-
 end

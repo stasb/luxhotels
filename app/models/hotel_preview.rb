@@ -57,12 +57,8 @@ class HotelPreview
       end
     end
 
-    Hotel.build_complete_hotels
-
-    @insert_counter
-
+    Hotel.build_complete_hotels(citySelect, countryCode)
   end
-
 end
 
 
