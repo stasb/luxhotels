@@ -1,0 +1,16 @@
+.container-fluid
+  .row-fluid
+    .span12
+      %h1 Hotels in #{@country.name}
+  .row-fluid
+    .span12
+      %h3 Cities
+      - if @active_cities
+        %ul
+        - @active_cities.each do |city|
+          %li
+            = link_to city.name, city_path(city)
+      - else
+        %p
+          Sorry, no cities could be found.
+

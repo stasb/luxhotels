@@ -4,14 +4,13 @@ class Hotel
   paginates_per 10
 
   before_create :build_city
+  belongs_to :city
 
   mount_uploader :image, HotelImageUploader
   mount_uploader :thumb_image, HotelImageUploader
 
   field :name, type: String
   index( { name: 1}, { unique: true, name: 'name_index' } )
-
-  belongs_to :city
 
   def self.build_complete_hotels(city_name, country_code)
 
@@ -27,6 +26,7 @@ class Hotel
         hotel_data = api_info.body['HotelInformationResponse']
         city = City.build_city(city_name, country_code)
         hotel = city.hotels.create(hotel_data)
+        city.hotels << hotel
         hotel.process_image(hotel)
       end
     end

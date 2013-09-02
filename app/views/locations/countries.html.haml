@@ -4,7 +4,10 @@
       %h1 Browse by country
   .row-fluid
     .span12
-      %h3 Asia Pacific
-      %h3 Americas
-      %h3 Europe
-      %h3 Africa
+      - if @active_regions
+        - @active_regions.each do |region|
+          %h3= region.name
+          %ul
+          - region.countries.each do |country|
+            %li
+              = link_to country.name, country_path(country.id)

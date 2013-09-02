@@ -1,0 +1,15 @@
+.container-fluid
+  .row-fluid
+    .span12
+      %h1 Hotels in #{@city.name}
+    - if @hotels
+      .row-fluid
+        .span12
+        %ul
+          - @hotels.each do |hotel|
+            %li
+              = link_to CGI::unescapeHTML(hotel.HotelSummary['name']), hotel_path(hotel)
+    - else
+      %p
+        Sorry, no hotels could be found.
+
