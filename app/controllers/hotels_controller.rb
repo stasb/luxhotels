@@ -18,6 +18,8 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
+    @city = @hotel.city
+    @country = @city.country
   end
 
   def index

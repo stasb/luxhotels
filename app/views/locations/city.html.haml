@@ -1,6 +1,14 @@
 .container-fluid
   .row-fluid
     .span12
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Countries', countries_path
+        %li= link_to @city.country.name, country_path(@city.country)
+        %li.active
+          = @city.name
+  .row-fluid
+    .span12
       %h1 Hotels in #{@city.name}
     - if @hotels
       .row-fluid

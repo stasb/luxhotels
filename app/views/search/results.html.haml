@@ -10,6 +10,7 @@
             - else
               Search results for
               %b #{@query}
+      = render partial: 'shared/pagination', locals: { results: @results } unless @results == nil
       .row-fluid
         .span12
           - if @results != nil

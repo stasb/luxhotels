@@ -1,4 +1,4 @@
-- content_for :head do
+- content_for :javascript do
   :javascript
     Galleria.configure({
         overlayBackground: '#e52828'
@@ -6,6 +6,15 @@
     Galleria.run('#galleria');
 
 .container-fluid
+  .row-fluid
+    .span12
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Countries', countries_path
+        %li= link_to @country.name, country_path(@country)
+        %li= link_to @city.name, city_path(@city)
+        %li.active
+          = @hotel.HotelSummary['name']
   .row-fluid
     .span9.main-content.hotel-view
       .hotel-content

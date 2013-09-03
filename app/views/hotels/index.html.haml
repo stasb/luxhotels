@@ -2,6 +2,7 @@
   .row-fluid
     .span3.side-bar
     .span9.main-content
+      = render partial: 'shared/pagination', locals: { results: @hotels } unless @hotels == nil
       .all-deals
         = render 'hotel_modules'
-      = paginate @hotels
+      = render partial: 'shared/pagination', locals: { results: @hotels } unless @hotels == nil
