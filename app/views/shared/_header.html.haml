@@ -1,13 +1,20 @@
 %header
-  .navbar
-    .navbar-inner.navbar-static-top
-      .container-fluid.header
-        %a{:href => root_path}
-          %h1 Luxhotels
-        .nav
+  %nav.navbar.navbar-default.navbar-static-top
+    .container-fluid
+      .navbar-header
+        = link_to 'Luxhotels', root_path, class: 'navbar-brand'
+      .collapse.navbar-collapse.navbar-ex1-collapse
+        %ul.nav.navbar-nav
           - if user_signed_in?
-            = link_to 'Sign out', destroy_user_session_path, method: :delete
+            %li
+              = link_to 'Sign out', destroy_user_session_path, method: :delete
             - if current_user['admin']
-              %span
-                \-
-              = link_to 'Mining System', admin_path
+              %li
+                = link_to 'Mining System', admin_path
+        = form_tag search_path, method: :get, class: 'navbar-form navbar-left' do
+          .form-group
+            - if params[:search]
+              = text_field_tag :search, nil, placeholder: params[:search], class: 'form-control'
+            - else
+              = text_field_tag :search, nil, class: 'form-control'
+          = submit_tag 'Search', name: nil, class: 'btn btn-default'

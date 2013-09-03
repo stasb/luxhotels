@@ -1,2 +1,2 @@
-- @hotels.each do |f|
-  = render partial: 'hotels/hotel', locals: { hotel: f }
+- @hotels.each do |hotel|
+  = render partial: 'hotels/hotel', locals: { hotel: hotel }

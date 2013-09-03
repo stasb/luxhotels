@@ -5,14 +5,17 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: luxhotels
+      database: luxhotels_development
+      # database: luxhotels
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - dharma.mongohq.com:10027
-      username: belkiii
-      password: luxhotels88
-      options:
+        - localhost:27017
+      # hosts:
+      #   - dharma.mongohq.com:10027
+      # username: belkiii
+      # password: luxhotels88
+      # options:
         # Change whether the session persists in safe mode by default.
         # (default: false)
         # safe: false

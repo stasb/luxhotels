@@ -28,6 +28,7 @@ class HotelPreview
   field :hotelDestination, type: Boolean
   field :thumbNailUrl, type: String
   field :deepLink, type: String
+
   mount_uploader :image, HotelImageUploader
 
   def self.build_hotels(citySelect, limitSelect, countryCode, starRating)
@@ -43,22 +44,14 @@ class HotelPreview
       hotel_objects = api_hotels.body['HotelListResponse']['HotelList']['HotelSummary'].first(limitSelect.to_i)
     end
 
-    @insert_counter = 0
+    fetched_hotels = []
 
-    hotel_objects.each do |f|
-      existing_hotels = HotelPreview.where(hotelId: f.fetch("hotelId")).count
-      if existing_hotels == 0
-        # existing_thumb = f["thumbNailUrl"].to_s
-        # large_image_url = "http://images.travelnow.com" + existing_thumb.sub("_t.jpg","_b.jpg")
-        hotel = HotelPreview.create(f)
-        # hotel.remote_image_url = large_image_url
-        hotel.save
-        @insert_counter += 1
+    hotel_objects.each do |hotel|
+      if HotelPreview.where(hotelId: hotel['hotelId']).count == 0
+        fetched_hotels << HotelPreview.create(hotel)
       end
     end
 
-    Hotel.build_complete_hotels(citySelect, countryCode)
+    Hotel.build_complete_hotels(fetched_hotels, citySelect, countryCode)
   end
 end
-
-
