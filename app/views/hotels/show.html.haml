@@ -14,7 +14,7 @@
         %li= link_to @country.name, country_path(@country)
         %li= link_to @city.name, city_path(@city)
         %li.active
-          = @hotel.HotelSummary['name']
+          = CGI::unescapeHTML(@hotel.HotelSummary['name'])
   .row-fluid
     .span9.main-content.hotel-view
       .hotel-content

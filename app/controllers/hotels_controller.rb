@@ -24,6 +24,7 @@ class HotelsController < ApplicationController
 
   def index
     @hotels = Hotel.page(params[:page])
+    @leader = Hotel.where(leader: true).first
   end
 
   def destroy

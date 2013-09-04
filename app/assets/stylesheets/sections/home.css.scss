@@ -1,0 +1,57 @@
+.home {
+  .date-picker {
+    height: 270px;
+    margin-bottom: 100px;
+    @include panel-background;
+
+    .date-picker-content {
+      padding: 20px 25px 10px 25px;
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  .hotel-leader {
+    height: 473px; 
+    margin-bottom: 100px;
+    position: relative;
+    @include panel-background;
+
+    .info {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 310px;
+      background-color: white;
+
+      p {
+        font-size: 30px;
+        padding: 16px 0px 10px 20px;
+        color: black;
+        width: 200px;
+        line-height: 35px;
+      }
+
+      img {
+        position: absolute;
+        right: 20px;
+        bottom: 13px;
+      }
+
+      .details {
+        position: absolute;
+        background-color: $primaryColor;
+        height: 35px;
+        width: 100%;
+
+        p {
+          font-size: 15px;
+          color: white;
+          padding: 0px 0px 0px 20px;
+        }
+      }
+    }
+  }
+}

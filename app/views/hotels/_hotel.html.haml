@@ -32,7 +32,9 @@
           = number_with_precision(hotel.HotelSummary['lowRate'], :precision => 0)
     .button
       %p Book
-  .delete
-    = link_to "Delete hotel", hotel_path(hotel), method: :delete
+  - if user_signed_in?
+    - if current_user['admin']
+      .delete
+        = link_to "Delete hotel", hotel_path(hotel), method: :delete
   .divider
 

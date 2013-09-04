@@ -1,6 +1,9 @@
-@import 'globals/basic';
+@import 'globals/bootstrap-variables';
+@import 'bootstrap';
 
+@import 'globals/basic';
 @import 'components/hotel_modules';
 @import 'shared/header';
 @import 'shared/footer';
+@import 'sections/home';
 @import 'galleria.classic';

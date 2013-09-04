@@ -1,7 +1,26 @@
-.container-fluid
+.container-fluid.home
   .row-fluid
-    .span3.side-bar
-    .span9.main-content
+    .span3.date-picker
+      .date-picker-content
+        %p
+          Search the Finest Hotels
+    .span9.hotel-leader
+      %a{href: hotel_path(@leader.id)}
+        - b_url = @leader['HotelImages']['HotelImage'][4]['url']
+        - z_url = b_url.sub('_b', '_z')
+        = image_tag z_url, alt: @leader['HotelSummary']['name']
+        .info
+          %p
+            = @leader['HotelSummary']['name'].sub(/,(.*)/, '')
+            = @leader.city.name
+          = image_tag 'right-arrow.png', alt: 'right arrow'
+          .details
+            %p
+              from
+              %b $140
+  .row-fluid
+    .span2.side-bar
+    .span10.main-content
       = render partial: 'shared/pagination', locals: { results: @hotels } unless @hotels == nil
       .all-deals
         = render 'hotel_modules'

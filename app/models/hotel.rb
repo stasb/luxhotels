@@ -12,6 +12,8 @@ class Hotel
 
   field :name, type: String
 
+  field :leader, type: Boolean
+
   index( { 'HotelSummary.name' => 1}, { unique: true, name: 'name_index' } )
 
   def search_name

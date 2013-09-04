@@ -5,14 +5,17 @@ html {
 }
 
 body {
-  font-family: "proxima-nova-soft";
   background-color: #ededed;
   background-image:url('pw_maze_white.png');
 }
 
 .container-fluid {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 995px;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
 }
 
 .main-content {
@@ -33,4 +36,17 @@ h3 {
 
 .container.min {
   min-height: 500px;
+}
+
+input[type='text'] {
+  border-radius: 0px !important;
+}
+
+a {
+  border-radius: 0px !important;
+}
+
+@mixin panel-background {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }

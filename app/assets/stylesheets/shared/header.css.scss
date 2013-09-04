@@ -1,0 +1,20 @@
+header {
+  margin-bottom: 30px;
+}
+
+nav.navbar {
+  background-color: white;
+  height: 100px;
+
+  .brand {
+    margin-top: 15px;
+  }
+
+  .search-bar {
+    margin-top: 32px;
+
+    input[type='text'] {
+      width: 250px;
+    }
+  }
+}
