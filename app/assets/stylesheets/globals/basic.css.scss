@@ -5,8 +5,13 @@ html {
 }
 
 body {
+  font-family: 'Raleway', sans-serif;
   background-color: #ededed;
   background-image:url('pw_maze_white.png');
+}
+
+input {
+  font-family: 'Raleway', sans-serif;
 }
 
 .container-fluid {
@@ -49,4 +54,13 @@ a {
 @mixin panel-background {
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+@mixin no-shadow {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
 }

@@ -1,3 +1,5 @@
+@import 'globals/variables';
+
 header {
   margin-bottom: 30px;
 }
@@ -14,7 +16,38 @@ nav.navbar {
     margin-top: 32px;
 
     input[type='text'] {
-      width: 250px;
+      background-color: $lightGrey;
+      border: none;
+      width: 200px;
+      height: 30px;
+      padding-left: 15px;
+
+      @include no-shadow
+    }
+
+    input[type='submit'] {
+      height: 38px;
+      width: 80px;
+      background: white;
+
+      &:hover {
+        background: darken(white, 4%);
+      }
+
+      @include no-shadow
+    }
+
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        color:    $grey;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:    $grey;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:   $grey;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        color:   $grey;
     }
   }
 }
