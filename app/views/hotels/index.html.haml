@@ -34,7 +34,7 @@
       %p
         Receive news, offers, and travel ideas across a range of global destinations.
       = form_tag newsletter_subscribe_path, method: :post, class: 'navbar-form' do
-        = text_field_tag :newsletter, nil, placeholder: 'email@example.com'
+        = text_field_tag :email, nil, placeholder: 'email@example.com'
         = submit_tag 'Sign Up', name: nil, class: 'btn'
 
   .row-fluid
