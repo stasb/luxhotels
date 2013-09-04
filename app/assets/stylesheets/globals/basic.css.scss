@@ -28,7 +28,8 @@ p {
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 h3 {
@@ -51,16 +52,31 @@ a {
   border-radius: 0px !important;
 }
 
-@mixin panel-background {
-  background-color: white;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+.btn {
+  height: 38px;
+  width: 80px;
+  background: white;
+
+  &:hover {
+    background: darken(white, 4%);
+  }
+
+  @include no-shadow
 }
 
-@mixin no-shadow {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
+.panel-row {
+  margin-bottom: 32px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    $grey !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    $grey !important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:   $grey !important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:   $grey !important;
 }

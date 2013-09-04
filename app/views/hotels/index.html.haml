@@ -1,5 +1,5 @@
 .container-fluid.home
-  .row-fluid
+  .row-fluid.panel-row
     .span3.date-picker
       .date-picker-content
         %p
@@ -17,7 +17,26 @@
           .details
             %p
               from
-              %b $140
+              %b
+                = "#{'$' + number_with_precision(@leader.HotelSummary['lowRate'], :precision => 0)}"
+              per night
+  .row-fluid.panel-row
+    .span8.welcome
+      = image_tag 'travel-circle.png', alt: 'luxhotels travel'
+      .text
+        %p
+          %span Welcome to Luxhotels
+        Luxhotels provides a way to find the highest quality, most luxurious hotels around the world. Browse through a range of premium hotels,
+        and book your stay through the website's easy to use interface.
+    .span4.newsletter
+      %h2
+        Sign up for our Newsletter
+      %p
+        Receive news, offers, and travel ideas across a range of global destinations.
+      = form_tag newsletter_subscribe_path, method: :post, class: 'navbar-form' do
+        = text_field_tag :newsletter, nil, placeholder: 'email@example.com'
+        = submit_tag 'Sign Up', name: nil, class: 'btn'
+
   .row-fluid
     .span2.side-bar
     .span10.main-content

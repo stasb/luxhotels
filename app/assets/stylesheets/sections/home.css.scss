@@ -1,57 +1,112 @@
-.home {
-  .date-picker {
-    height: 270px;
-    margin-bottom: 100px;
-    @include panel-background;
+.date-picker {
+  height: 473px;
+  @include panel-background;
 
-    .date-picker-content {
-      padding: 20px 25px 10px 25px;
+  .date-picker-content {
+    padding: 20px 25px 10px 25px;
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+.hotel-leader {
+  height: 473px; 
+  position: relative;
+  @include panel-background;
+
+  .info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 310px;
+    background-color: white;
+
+    p {
+      font-size: 30px;
+      padding: 16px 0px 10px 20px;
+      color: black;
+      width: 200px;
+      line-height: 35px;
+    }
+
+    img {
+      position: absolute;
+      right: 20px;
+      bottom: 13px;
+    }
+
+    .details {
+      position: absolute;
+      background-color: $primaryColor;
+      height: 35px;
+      width: 100%;
 
       p {
-        text-align: center;
+        font-size: 15px;
+        color: white;
+        padding: 0px 0px 0px 20px;
       }
     }
   }
+}
 
-  .hotel-leader {
-    height: 473px; 
-    margin-bottom: 100px;
-    position: relative;
-    @include panel-background;
+.welcome {
+  background: white;
+  height: 226px;
+  @include panel-background;
 
-    .info {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 310px;
-      background-color: white;
+  img {
+    float: left;
+    padding: 20px 20px 20px 20px;
+  }
 
-      p {
-        font-size: 30px;
-        padding: 16px 0px 10px 20px;
-        color: black;
-        width: 200px;
-        line-height: 35px;
-      }
+  .text {
+    padding: 50px 20px 20px 40px;
+  }
 
-      img {
-        position: absolute;
-        right: 20px;
-        bottom: 13px;
-      }
+  p {
+    font-weight: 500;
 
-      .details {
-        position: absolute;
-        background-color: $primaryColor;
-        height: 35px;
-        width: 100%;
-
-        p {
-          font-size: 15px;
-          color: white;
-          padding: 0px 0px 0px 20px;
-        }
-      }
+    span {
+      font-size: 22px;
     }
+  }
+}
+
+.newsletter {
+  background: white;
+  height: 226px;
+  @include panel-background;
+
+  h2 {
+    padding: 30px 20px 0px 20px;
+  }
+
+  p {
+    padding: 0px 20px 0px 20px;
+  }
+
+  form {
+    padding: 0px 0px 0px 20px;
+  }
+
+  input[type='text'] {
+    background-color: $lightGrey;
+    width: 170px;
+    height: 30px;
+    padding-left: 15px;
+
+    @include no-shadow
+  }
+
+  input[type='submit'] {
+    height: 40px;
+    margin-left: -5px;
+    border-radius: 0;
+    background-color: $primaryColor;
+    color: white;
+    text-shadow: none;
   }
 }

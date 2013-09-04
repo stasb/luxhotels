@@ -26,5 +26,7 @@ Luxhotels::Application.routes.draw do
 
   match 'admin/construct_hotels', to: 'miners#construct_hotels'
 
+  match 'newsletter/add_subscriber', to: 'newsletter#subscribe', as: 'newsletter_subscribe'
+
   root :to => 'hotels#index'
 end
