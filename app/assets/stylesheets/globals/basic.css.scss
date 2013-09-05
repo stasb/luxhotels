@@ -51,6 +51,8 @@ h3 {
 }
 
 .breadcrumb {
+  @include panel-background;
+
   border-radius: 0px !important;
   background: white;
 

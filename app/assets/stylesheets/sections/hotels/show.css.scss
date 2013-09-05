@@ -1,0 +1,86 @@
+@import 'globals/variables';
+
+.main-content {
+  @include panel-background;
+}
+
+.image-carousel {
+  #galleria {
+    height: 300px;
+    width: 100%;
+
+    .galleria-container {
+      background-color: white;
+      width: 100%;
+
+      .galleria-thumb-nav-right:hover {
+        background-color: $lightGrey !important;
+      }
+
+      .galleria-images {
+        margin-top: 10px !important;
+      }
+
+      .galleria-thumb-nav-left:hover {
+        background-color: $lightGrey !important;
+      }
+    }
+  }
+}
+
+.hotel-content {
+  .hotel-divider {
+    height: 1px;
+    width: 100%;
+    background-color: darken($lightGrey, 10%);
+    margin: 20px 0px 20px 0px;
+  }
+
+  h2 {
+    font-size: 25px;
+    padding: 10px 0px 0px 25px;
+
+    span {
+      font-size: 15px;
+      display: block;
+      color: $grey;
+    }
+  }
+
+  .price-info {
+    height: 45px;
+    background-color: $primaryColor;
+
+    p {
+      font-size: 18px;
+      color: white;
+      padding: 12px 0px 0px 25px;
+    }
+  }
+
+  .hotel-description {
+    padding: 0px 25px 0px 25px;
+
+    p {
+      margin-bottom: 20px;
+      b {
+        display: block;
+        font-size: 18px;
+        margin-bottom: -10px;
+      }
+    }
+  }
+}
+
+.date-picker {
+  height: 600px;
+  @include panel-background;
+
+  .date-picker-content {
+    padding: 20px 25px 10px 25px;
+
+    p {
+      text-align: center;
+    }
+  }
+}

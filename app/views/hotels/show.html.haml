@@ -30,13 +30,16 @@
   .row-fluid
     .span9.main-content.hotel-view
       .hotel-content
-        %h3
+        %h2
           = CGI::unescapeHTML(@hotel.HotelSummary['name'])
           %span
-            \-
             = @hotel.HotelSummary['city']
-
-        .hotel-divider
+        .price-info
+          %p
+            from
+            %b
+              = "#{'$' + number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)}"
+            per night
         .image-carousel
           #galleria
             - images = @hotel.HotelImages['HotelImage']
@@ -45,37 +48,30 @@
         .hotel-divider
         .hotel-description
           = CGI::unescapeHTML(@hotel.HotelDetails['propertyDescription']).html_safe
-        .hotel-divider
         .hotel-description
-          %b Hotel Policy:
-          %br
-          = CGI::unescapeHTML(@hotel.HotelDetails['hotelPolicy']).html_safe
-        .hotel-divider
-        .hotel-description
-          %b Room Types:
-          %br
-          - room_types = @hotel.RoomTypes['RoomType']
-          %ul
-          - if room_types.class == Array
-            - room_types.each do |type|
-              %li
-                = type['description'].to_s
-          - else
-            %li
-              = room_types['description']
-        .hotel-divider
-        .hotel-description
-          %b
-            Number of floors: #{@hotel.HotelDetails['numberOfFloors']},
-          %b
-            Number of rooms: #{@hotel.HotelDetails['numberOfRooms']}
-          %br
-
-    .span3.side-bar
-      .side-bar-content
-        .price
           %p
-            from
-            %span
-              USD$
-              = number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)
+            %b Hotel Policy:
+            %br
+            = CGI::unescapeHTML(@hotel.HotelDetails['hotelPolicy']).html_safe
+        .hotel-description
+          %p
+            %b Room Types:
+            %br
+            - room_types = @hotel.RoomTypes['RoomType']
+            %ul
+            - if room_types.class == Array
+              - room_types.each do |type|
+                %li
+                  = type['description'].to_s
+            - else
+              %li
+                = room_types['description']
+        .hotel-description
+          %p
+            Number of floors: #{@hotel.HotelDetails['numberOfFloors']},
+            Number of rooms: #{@hotel.HotelDetails['numberOfRooms']}
+
+    .span3.date-picker
+      .date-picker-content
+        %p
+          Search Hotel Availability
