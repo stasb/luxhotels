@@ -24,6 +24,9 @@ class HotelsController < ApplicationController
   def index
     @hotels = Hotel.page(params[:page])
     @leader = Hotel.where(leader: true).first
+    if @leader == nil
+      @leader = Hotel.first
+    end
 
     @a_countries = Region.where(name: 'Asia').first.countries
     @a_cities = City.all.select do |city|

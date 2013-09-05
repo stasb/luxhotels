@@ -9,7 +9,7 @@
         per night
     .info
       %p
-        = hotel['HotelSummary']['name'].sub(/,(.*)/, '')
+        = truncate(hotel['HotelSummary']['name'].sub(/,(.*)/, ''), length: 20)
         %span
           = hotel.city.name
       = image_tag 'right-arrow.png', alt: 'right arrow'
