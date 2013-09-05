@@ -1,8 +1,11 @@
 .container-fluid
   .row-fluid
     .span12
-      %ol.breadcrumb
-        %li= link_to 'Home', root_path
+      %ul.breadcrumb
+        %li
+          = link_to 'Home', root_path
+          %span.divider
+            \/
         %li.active
           Countries
   .row-fluid

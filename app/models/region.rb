@@ -20,4 +20,15 @@ class Region
     end
     return region
   end
+
+  def active_hotels
+    countries = Region.where(name: self.name).first.countries
+    cities = City.all.select do |city|
+      countries.include?(city.country)
+    end
+    hotels = Hotel.all.select do |hotel|
+      cities.include?(hotel.city)
+    end
+    hotels
+  end
 end

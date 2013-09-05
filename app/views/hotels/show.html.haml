@@ -8,11 +8,23 @@
 .container-fluid
   .row-fluid
     .span12
-      %ol.breadcrumb
-        %li= link_to 'Home', root_path
-        %li= link_to 'Countries', countries_path
-        %li= link_to @country.name, country_path(@country)
-        %li= link_to @city.name, city_path(@city)
+      %ul.breadcrumb
+        %li
+          = link_to 'Home', root_path
+          %span.divider
+            \/
+        %li
+          = link_to 'Countries', countries_path
+          %span.divider
+            \/
+        %li
+          = link_to @country.name, country_path(@country)
+          %span.divider
+            \/
+        %li
+          = link_to @city.name, city_path(@city)
+          %span.divider
+            \/
         %li.active
           = CGI::unescapeHTML(@hotel.HotelSummary['name'])
   .row-fluid

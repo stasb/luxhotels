@@ -50,6 +50,24 @@ h3 {
   min-height: 500px;
 }
 
+.breadcrumb {
+  border-radius: 0px !important;
+  background: white;
+
+  a {
+    color: black;
+
+    &:hover {
+      text-decoration: none;
+      color: $primaryColor;
+    }
+  }
+}
+
+.divider {
+  background-color: transparent !important;
+}
+
 input[type='text'] {
   border-radius: 0px !important;
 }

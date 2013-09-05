@@ -28,29 +28,7 @@ class HotelsController < ApplicationController
       @leader = Hotel.first
     end
 
-    @a_countries = Region.where(name: 'Asia').first.countries
-    @a_cities = City.all.select do |city|
-      @a_countries.include?(city.country)
-    end
-    @a_hotels = Hotel.all.select do |hotel|
-      @a_cities.include?(hotel.city)
-    end
-
-    @na_countries = Region.where(name: 'North America').first.countries
-    @na_cities = City.all.select do |city|
-      @na_countries.include?(city.country)
-    end
-    @na_hotels = Hotel.all.select do |hotel|
-      @na_cities.include?(hotel.city)
-    end
-
-    @eu_countries = Region.where(name: 'Europe').first.countries
-    @eu_cities = City.all.select do |city|
-      @eu_countries.include?(city.country)
-    end
-    @eu_hotels = Hotel.all.select do |hotel|
-      @eu_cities.include?(hotel.city)
-    end
+    @regions = Region.all
   end
 
   def destroy

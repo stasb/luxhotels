@@ -42,18 +42,7 @@
         Popular Hotels in
         %b
           Asia
-  .row-fluid.panel-row
-    .span8
-      = render partial: 'shared/large_panel', locals: { hotel: @a_hotels[0] }
-    .span4
-      - @a_hotels[1..2].each do |hotel|
-        .row-fluid.panel-row
-          .span12
-            = render partial: 'shared/small_panel', locals: { hotel: hotel }
-  .row-fluid.panel-row
-    - @a_hotels[3..5].each do |hotel|
-      .span4
-        = render partial: 'shared/small_panel', locals: { hotel: hotel }
+  = render partial: 'shared/panel_section_left', locals: { hotels: @regions.find_by(name: 'Asia').active_hotels }
 
   .row-fluid.panel-row
     .home-heading
@@ -61,18 +50,7 @@
         Popular Hotels in
         %b
           North America
-  .row-fluid.panel-row
-    .span4
-      - @na_hotels[1..2].each do |hotel|
-        .row-fluid.panel-row
-          .span12
-            = render partial: 'shared/small_panel', locals: { hotel: hotel }
-    .span8
-      = render partial: 'shared/large_panel', locals: { hotel: @na_hotels[0] }
-  .row-fluid.panel-row
-    - @na_hotels[3..5].each do |hotel|
-      .span4
-        = render partial: 'shared/small_panel', locals: { hotel: hotel }
+  = render partial: 'shared/panel_section_right', locals: { hotels: @regions.find_by(name: 'North America').active_hotels }
 
   .row-fluid.panel-row
     .home-heading
@@ -80,18 +58,7 @@
         Popular Hotels in
         %span
           Europe
-  .row-fluid.panel-row
-    .span8
-      = render partial: 'shared/large_panel', locals: { hotel: @eu_hotels[0] }
-    .span4
-      - @eu_hotels[1..2].each do |hotel|
-        .row-fluid.panel-row
-          .span12
-            = render partial: 'shared/small_panel', locals: { hotel: hotel }
-  .row-fluid.panel-row
-    - @eu_hotels[3..5].each do |hotel|
-      .span4
-        = render partial: 'shared/small_panel', locals: { hotel: hotel }
+  = render partial: 'shared/panel_section_left', locals: { hotels: @regions.find_by(name: 'Europe').active_hotels }
 
   / .row-fluid
   /   .span2.side-bar
