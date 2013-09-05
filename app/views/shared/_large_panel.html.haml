@@ -1,0 +1,17 @@
+.hp-large
+  %a{href: hotel_path(hotel.id)}
+    - b_url = hotel['HotelImages']['HotelImage'][4]['url']
+    - z_url = b_url.sub('_b', '_z')
+    = image_tag z_url, alt: hotel['HotelSummary']['name']
+    .price
+      %p
+        from
+        %b
+          = "#{'$' + number_with_precision(hotel.HotelSummary['lowRate'], :precision => 0)}"
+        per night
+    .info
+      %p
+        = hotel['HotelSummary']['name'].sub(/,(.*)/, '')
+        %span
+          = hotel.city.name
+      = image_tag 'right-arrow.png', alt: 'right arrow'

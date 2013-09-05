@@ -46,7 +46,7 @@ class Hotel
     first_image = hotel['HotelImages']['HotelImage'][0]['url']
     hotel.remote_image_url = first_image.to_s
     hotel['image'] = hotel.image_url
-    hotel['thumb_image'] = hotel.image_url(:thumb)
+    hotel['thumb_panel'] = hotel.image_url(:thumb_panel)
     hotel.save
   end
 end

@@ -18,7 +18,7 @@
         .container-fluid.flash
           .row-fluid
             .span12
-              .alert.alert-info= flash[:error]
+              .alert.alert-error= flash[:error]
       = yield
     = render partial: 'shared/footer'
 

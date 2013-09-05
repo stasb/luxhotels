@@ -33,8 +33,8 @@ class HotelImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_fill => [168, 105]
+  version :thumb_panel do
+    process :resize_to_fill => [318, 212]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
