@@ -33,7 +33,8 @@
         %h2
           = CGI::unescapeHTML(@hotel.HotelSummary['name'])
           %span
-            = @hotel.HotelSummary['city']
+            = "#{@hotel.HotelSummary['city'] + ','}"
+            = @hotel.city.country.name
         .price-info
           %p
             from

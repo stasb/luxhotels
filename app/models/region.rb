@@ -26,7 +26,7 @@ class Region
     cities = City.all.select do |city|
       countries.include?(city.country)
     end
-    hotels = Hotel.all.select do |hotel|
+    hotels = Hotel.where(leader: false).select do |hotel|
       cities.include?(hotel.city)
     end
     hotels

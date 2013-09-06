@@ -9,14 +9,16 @@
         %li.active
           Countries
   .row-fluid
-    .span12
-      %h1 Browse by country
-  .row-fluid
-    .span12
-      - if @active_regions
-        - @active_regions.each do |region|
-          %h3= region.name
-          %ul
-          - region.countries.each do |country|
-            %li
-              = link_to country.name, country_path(country.id)
+    .span12.location
+      .row-fluid.heading
+        .span12
+          %h1 Browse by country
+      .row-fluid.areas
+        .span12
+          - if @active_regions
+            - @active_regions.each do |region|
+              %h2= region.name
+              %ul
+                - region.countries.each do |country|
+                  %li
+                    = link_to country.name, country_path(country.id)

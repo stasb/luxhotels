@@ -1,0 +1,37 @@
+@import 'globals/variables';
+
+.location {
+  @include panel-background;
+
+  .heading {
+    padding: 10px 10px 0px 30px;
+  }
+
+  .areas {
+    padding: 10px 10px 10px 30px;
+  }
+
+  background: white;
+
+  .areas {
+    ul {
+      list-style-type: none;
+      li {
+        color: $grey;
+        a {
+          font-size: 14px;
+          color: $grey;
+
+          &:hover {
+            color: $primaryColor;
+          }
+        }
+      }
+    }
+
+    .added-padding {
+      padding: 5px 0px 5px 0px;
+    }
+  }
+}
+

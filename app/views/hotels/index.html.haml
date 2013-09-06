@@ -6,7 +6,7 @@
           Search the Finest Hotels
     .span9.hotel-leader
       %a{href: hotel_path(@leader.id)}
-        - b_url = @leader['HotelImages']['HotelImage'][3]['url']
+        - b_url = @leader['HotelImages']['HotelImage'][4]['url']
         - z_url = b_url.sub('_b', '_z')
         = image_tag z_url, alt: @leader['HotelSummary']['name']
         .info

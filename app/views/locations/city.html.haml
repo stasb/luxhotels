@@ -17,15 +17,17 @@
         %li.active
           = @city.name
   .row-fluid
-    .span12
-      %h1 Hotels in #{@city.name}
-    - if @hotels
-      .row-fluid
-        .span12
-        %ul
-          - @hotels.each do |hotel|
-            %li
-              = link_to CGI::unescapeHTML(hotel.HotelSummary['name']), hotel_path(hotel)
-    - else
-      %p
-        Sorry, no hotels could be found.
+    .span12.location
+      .row-fluid.heading
+        %h1 Hotels in #{@city.name}
+      .row-fluid.areas
+        - if @hotels
+          .row-fluid
+            .span12
+              %ul
+                - @hotels.each do |hotel|
+                  %li.added-padding
+                    = link_to "#{CGI::unescapeHTML(hotel.HotelSummary['name'])}, #{hotel.HotelSummary['hotelRating']} stars", hotel_path(hotel)
+        - else
+          %p
+            Sorry, no hotels could be found.

@@ -1,0 +1,22 @@
+%a{href: hotel_path(hotel)}
+  .row-fluid.hotel-module.panel-row
+    .span6
+      = image_tag hotel.image.thumb_search, alt: hotel['HotelSummary']['name']
+    .span6.description
+      %p.headline
+        = truncate(CGI::unescapeHTML(hotel.HotelSummary['name']).html_safe, length: 40)
+        %span
+          = "#{hotel.city.name}, #{hotel.city.country.name}"
+      .module-divider
+      %p.info
+        / = truncate((CGI::unescapeHTML(hotel.HotelDetails['propertyDescription']).scan(/(?<=<b>Property Location<\/b> <br \/>)(.*)(?=<\/p>)/))[0].to_s.html_safe, length: 15)
+        Some awesome hotel description text
+      .module-divider
+      .price
+        %p
+          from
+          %b
+            = "#{'$' + number_with_precision(hotel.HotelSummary['lowRate'], :precision => 0)}"
+          per night
+      %p.follow-details
+        View Details →

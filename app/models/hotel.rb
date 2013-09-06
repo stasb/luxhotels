@@ -12,7 +12,7 @@ class Hotel
 
   field :name, type: String
 
-  field :leader, type: Boolean
+  field :leader, type: Boolean, default: false
 
   index( { 'HotelSummary.name' => 1}, { unique: true, name: 'name_index' } )
 
@@ -47,6 +47,7 @@ class Hotel
     hotel.remote_image_url = first_image.to_s
     hotel['image'] = hotel.image_url
     hotel['thumb_panel'] = hotel.image_url(:thumb_panel)
+    hotel['thumb_search'] = hotel.image_url(:thumb_search)
     hotel.save
   end
 end

@@ -37,6 +37,10 @@ class HotelImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [318, 212]
   end
 
+  version :thumb_search do
+    process :resize_to_fill => [318, 177]
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # end

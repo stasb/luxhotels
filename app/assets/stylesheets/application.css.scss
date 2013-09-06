@@ -4,6 +4,10 @@
 @import 'globals/basic';
 @import 'shared/header';
 @import 'shared/footer';
+@import 'shared/locations';
+@import 'shared/pagination';
 @import 'sections/home';
 @import 'sections/hotels/show';
+@import 'sections/hotels/hotel-module';
+@import 'sections/search/results';
 @import 'galleria.classic';

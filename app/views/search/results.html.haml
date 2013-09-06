@@ -1,21 +1,29 @@
 .container-fluid
   .row-fluid
-    .span3.side-bar
-    .span9.main-content
+    .span3.filter-results
+      .content
+        %p
+          Filter Matching Results
+    .span9.search-results
       .row-fluid
         .span12
-          %h3
+          %h2
             - if @query.empty?
-              Showing all hotels
+              Showing all hotels -
+              = Hotel.all.count
+              matches found
             - else
               Search results for
               %b #{@query}
+              \-
+              = @results.count
+              Matches Found
       = render partial: 'shared/pagination', locals: { results: @results } unless @results == nil
       .row-fluid
         .span12
           - if @results != nil
             - @results.each do |hotel|
-              = render partial: 'hotels/hotel', locals: { hotel: hotel }
+              = render partial: 'hotels/hotel_module', locals: { hotel: hotel }
           - else
             %p
               No hotels could be found.
