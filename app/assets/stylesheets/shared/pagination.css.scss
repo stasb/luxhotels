@@ -1,2 +1,9 @@
+@import 'globals/variables';
+
 .pagination {
+  li {
+    a {
+      color: $secondaryColor !important;
+    }
+  }
 }
