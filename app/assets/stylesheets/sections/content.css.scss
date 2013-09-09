@@ -1,0 +1,13 @@
+.basic-content {
+  @include panel-background;
+  background-color: white;
+  padding: 0px 0px 20px 0px;
+
+  h1 {
+    padding: 10px 0px 10px 30px;
+  }
+
+  p {
+    padding: 0px 20px 0px 10px;
+  }
+}

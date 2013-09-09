@@ -37,7 +37,7 @@ class Hotel
                               :customerUserAgent => "Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.4b)\
                               Gecko/20030516 Mozilla Firebird/0.6",\
                               :city => destination, :countryCode => country_code, :numberOfResults => 80,\
-                              :minStarRating => '4.0', :arrivalDate => from_date, :departureDate => to_date,\
+                              :minStarRating => 4.0, :arrivalDate => from_date, :departureDate => to_date,\
                               :room1 => 2})
     results = []
     hotel_list.body['HotelListResponse']['HotelList']['HotelSummary'].each do |hotel|

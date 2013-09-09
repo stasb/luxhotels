@@ -6,6 +6,8 @@ Luxhotels::Application.routes.draw do
 
   mount Sidekiq::Web, at: '/sidekiq'
 
+  match '/about', to: 'content#about', as: 'about'
+
   resources :hotels
 
   resources :bookings
