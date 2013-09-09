@@ -8,6 +8,8 @@ Luxhotels::Application.routes.draw do
 
   resources :hotels
 
+  resources :bookings
+
   get '/search', to: 'search#search', as: 'search'
 
   match '/city/:city_id', to: 'locations#city', as: 'city'

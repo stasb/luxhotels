@@ -1,7 +1,6 @@
 .container-fluid
   %h1 Admin Control Page
-  = link_to "Front Page", root_path
-
+  = link_to 'Front Page', root_path
   - if user_signed_in?
     %p
       Currently signed in as
@@ -9,128 +8,32 @@
       - if current_user.admin == true
         %span.text-success
           \[admin]
-    = link_to "Log out", destroy_user_session_path, :method => "delete"
+    = link_to 'Log out', destroy_user_session_path, method: 'delete'
     %br
-
   %br
-  .row-fluid
-    .span12
-      .divider-div
-  %br
-  / .row-fluid
-  /   .span6
-  /     %h2 Database Info
-  /     - if Hotel.empty?
-  /       %p There are no hotels
-  /     - else
-  /       %table.table.table-striped
-  /         %thead
-  /           %tr
-  /             %th City
-  /             %th Country
-  /             %th Hotels
-  /             %th Star Ratings
-  /         %tbody
-  /           - city_array = Array.new
-  /           - Hotel.all.each do |f|
-  /             - city_array << f.HotelSummary['city']
-  /           - city_array.uniq.each do |f|
-  /             %tr
-  /               %td
-  /                 = f.to_s
-  /               %td
-  /                 = Hotel.where("HotelSummary.city" => f).first.HotelSummary['countryCode']
-  /               %td
-  /                 = Hotel.where("HotelSummary.city" => f).count
-  /               %td
-  /                 - star_ratings = Array.new
-  /                 - Hotel.where("HotelSummary.city" => f).each do |f|
-  /                   - star_ratings << f.HotelSummary['hotelRating']
-  /                 = star_ratings.uniq.join(", ").to_s
-
-  .row-fluid
-    .span12
-      .divider-div
   .row-fluid.primary-controls
     .span6
       %h2 Build Hotel Database
-      = form_for @miner, :url => url_for(:controller => 'miners', :action => 'mine_hotels') do |f|
-        %p
-          - if @miner.errors.any?
-            .error_messages
-              %h2
-                = pluralize(@miner.errors.count, "error")
-                prohibited this message from being saved:
-              %ul
-                - @miner.errors.full_messages.each do |msg|
-                  %li= msg
-          .row-fluid
-            .span12
-              = f.label :citySelect, "City Name"
-              = f.text_field :citySelect, placeholder: "e.g. Bangkok"
-          .row-fluid
-            .span12
-              = f.label :countryCode, "Country Code"
-              = f.text_field :countryCode, placeholder: "e.g. TH"
-          .row-fluid
-            .span12
-              = f.label :limitSelect, "Max Limit (0 is no limit)"
-              = f.text_field :limitSelect, placeholder: "e.g. 50"
-          .row-fluid
-            .span12
-              = f.label :starRating, "Min Star Rating"
-              = f.text_field :starRating, placeholder: "e.g. 4.5"
-          .row-fluid
-            .span12
-              = f.submit "Build Hotels", class: "btn btn-success"
+      = simple_form_for @miner, url: url_for(controller: 'miners', action: 'mine_hotels'), html: { class: 'form-horizontal'}  do |f|
+        = f.input :citySelect, as: :text, label: 'City Name', placeholder: 'e.g. Bangkok', input_html: { rows: 1 }
+        = f.input :countryCode, as: :text,  label: 'Country Code', placeholder: 'e.g. TH', input_html: { rows: 1 }
+        = f.input :limitSelect, as: :text, label: 'Max Limit (0 is no limit)', placeholder: 'e.g. 50', input_html: { rows: 1 }
+        = f.input :starRating, as: :text, label: 'Min Star Rating', placeholder: 'e.g. 4.5', input_html: { rows: 1 }
+        .form-actions
+          = f.button :submit, 'Build Hotels', class: 'btn btn-success'
     .span6
       %h2 Destroy Hotels
-      = form_for @miner, :url => url_for(:controller => 'miners', :action => 'destroy_hotels') do |f|
-        %p
-          - if @miner.errors.any?
-            .error_messages
-              %h2
-                = pluralize(@miner.errors.count, "error")
-                prohibited this message from being saved:
-              %ul
-                - @miner.errors.full_messages.each do |msg|
-                  %li= msg
-          .row-fluid
-            .span12
-              = f.label :citySelect, "City Name"
-              = f.text_field :citySelect, placeholder: "e.g. Bangkok"
-          .row-fluid
-            .span12
-              = f.label :countryCode, "Country Code"
-              = f.text_field :countryCode, placeholder: "e.g. TH"
-          .row-fluid
-            .span12
-              = f.label :limitSelect, "Number of Hotels"
-              = f.text_field :limitSelect, placeholder: "e.g. 50"
-          .row-fluid
-            .span12
-              = f.label :starRating, "Min Star Rating"
-              = f.text_field :starRating, placeholder: "e.g. 4.5"
-          .row-fluid
-            .span12
-              = f.submit "Destroy Hotels", class: "btn btn-danger"
-
-  .row-fluid
-    .span12
-      .divider-div
-
+      = simple_form_for @miner, :url => url_for(:controller => 'miners', :action => 'destroy_hotels'), html: { class: 'form-horizontal' } do |f|
+        = f.input :citySelect, as: :text, label: 'City Name', placeholder: 'e.g. Bangkok', input_html: { rows: 1 }
+        = f.input :countryCode, as: :text,  label: 'Country Code', placeholder: 'e.g. TH', input_html: { rows: 1 }
+        = f.input :limitSelect, as: :text, label: 'Max Limit (0 is no limit)', placeholder: 'e.g. 50', input_html: { rows: 1 }
+        = f.input :starRating, as: :text, label: 'Min Star Rating', placeholder: 'e.g. 4.5', input_html: { rows: 1 }
+        .form-actions
+          = f.button :submit, 'Destroy Hotels', class: 'btn btn-danger'
   %br
   .row-fluid
     .span12
-      = button_to "Reconstruct All Hotels", admin_construct_hotels_path, :class => "btn btn-info"
-
+      = button_to 'Reconstruct All Hotels', admin_construct_hotels_path, class: 'btn btn-info'
   .row-fluid
     .span12
-      .divider-div
-
-  .row-fluid
-    .span12
-      .lead.danger-box
-        Remove all hotels
-        = button_to "Destroy All Hotels", {:action => "destroy_all_hotels", :controller => "miners"},  :class => 'btn btn-danger'
-
+      = button_to 'Destroy All Hotels', { action: 'destroy_all_hotels', controller: 'miners' },  class: 'btn btn-danger'

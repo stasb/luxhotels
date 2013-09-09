@@ -4,6 +4,7 @@
       .date-picker-content
         %p
           Search the Finest Hotels
+        = link_to 'Perform Test Search', new_booking_path
     .span9.hotel-leader
       %a{href: hotel_path(@leader.id)}
         - b_url = @leader['HotelImages']['HotelImage'][4]['url']

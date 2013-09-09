@@ -1,3 +1,5 @@
+include SearchHotel
+
 class Hotel
   include Mongoid::Document
   include Mongoid::FullTextSearch
@@ -21,6 +23,20 @@ class Hotel
   end
 
   fulltext_search_in :search_name
+
+  def self.search_availability
+    hotel_list = GetHotels({:customerIpAddress => "60.241.64.60",\
+                              :customerUserAgent => "Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.4b)\
+                              Gecko/20030516 Mozilla Firebird/0.6",\
+                              :city => 'Bangkok', :countryCode => 'TH', :numberOfResults => 80,\
+                              :minStarRating => '4.0', :arrivalDate => '10/10/13', :departureDate => '10/11/13',\
+                              :room1 => 2})
+    results = []
+    hotel_list.body['HotelListResponse']['HotelList']['HotelSummary'].each do |hotel|
+      results << hotel
+    end
+    results
+  end
 
   def self.build_complete_hotels(fetched_hotels, city_name, country_code)
 

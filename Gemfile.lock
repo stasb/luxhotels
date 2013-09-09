@@ -277,6 +277,9 @@ GEM
       json
       redis (>= 3.0)
       redis-namespace
+    simple_form (2.1.0)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -365,6 +368,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda-matchers
   sidekiq
+  simple_form
   sinatra
   slim
   steak
