@@ -4,7 +4,11 @@
       .date-picker-content
         %p
           Search the Finest Hotels
-        = link_to 'Perform Test Search', new_booking_path
+        = form_tag new_booking_path, method: :get, class: 'date-picker-select' do
+          = text_field_tag :destination, nil, placeholder: 'Destination'
+          = text_field_tag :from, nil, placeholder: 'Check In'
+          = text_field_tag :to, nil,  placeholder: 'Check Out'
+          = submit_tag 'Search', name: nil, class: 'btn'
     .span9.hotel-leader
       %a{href: hotel_path(@leader.id)}
         - b_url = @leader['HotelImages']['HotelImage'][4]['url']
@@ -60,11 +64,3 @@
         %span
           Europe
   = render partial: 'shared/panel_section_left', locals: { hotels: @regions.find_by(name: 'Europe').active_hotels }
-
-  / .row-fluid
-  /   .span2.side-bar
-  /   .span10.main-content
-  /     = render partial: 'shared/pagination', locals: { results: @hotels } unless @hotels == nil
-  /     .all-deals
-  /       = render 'hotel_modules'
-  /     = render partial: 'shared/pagination', locals: { results: @hotels } unless @hotels == nil

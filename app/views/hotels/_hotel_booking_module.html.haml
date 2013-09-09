@@ -8,7 +8,10 @@
       %p.headline
         = truncate(CGI::unescapeHTML(hotel['name']).html_safe, length: 40)
         %span
-          = "#{hotel['city']}, #{hotel['stateProvinceCode']}"
+          - if hotel['stateProvinceCode']
+            = "#{hotel['city']}, #{hotel['stateProvinceCode']}"
+          - else
+            = hotel['city']
       .module-divider
       %p.info
         = truncate(CGI::unescapeHTML(hotel['locationDescription']).html_safe, length: 200)

@@ -38,7 +38,7 @@ nav.navbar {
         background: darken(white, 4%);
       }
 
-      @include no-shadow
+      @include no-shadow;
     }
 
     ::-webkit-input-placeholder { /* WebKit browsers */
