@@ -88,11 +88,15 @@ production:
   sessions:
     # Defines the default session. (required)
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      database: luxhotels
+      hosts:
+        - dharma.mongohq.com:10027
+      username: belkiii
+      password: luxhotels88
       options:
         # Change whether the session persists in safe mode by default.
         # (default: false)
-        safe: true
+        # safe: true
         skip_version_check: true
 
         # Change the default consistency model to :eventual or :strong.
