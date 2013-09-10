@@ -38,6 +38,7 @@ gem 'sinatra'
 gem 'slim'
 gem 'subexec'
 gem 'therubyracer'
+gem 'unicorn'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
