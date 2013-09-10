@@ -20,12 +20,9 @@
             - else
               Search results for
               %b #{@query}
-              \-
-              - if @results == nil
-                No hotels could be found.
-              - else
+              - if @results != nil
+                \-
                 = @results.count
-              Matches Found
       = render partial: 'shared/pagination', locals: { results: @results } unless @results == nil
       .row-fluid
         .span12
