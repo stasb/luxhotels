@@ -1,0 +1,34 @@
+.container-fluid
+  .row-fluid
+    .span12
+      %ul.breadcrumb
+        %li
+          = link_to 'Home', root_path
+          %span.divider
+            \/
+        %li
+          = link_to 'Countries', countries_path
+          %span.divider
+            \/
+        %li
+          = link_to @city.country.name, country_path(@city.country)
+          %span.divider
+            \/
+        %li.active
+          = @city.name
+  .row-fluid
+    .span12.location
+      .row-fluid.heading
+        %h1 Hotels in #{@city.name}
+      .row-fluid.areas
+        - if @hotels
+          .row-fluid
+            .span12
+              %ul
+                - @hotels.each do |hotel|
+                  %li.added-padding
+                    = link_to "#{CGI::unescapeHTML(hotel.HotelSummary['name'])}, #{hotel.HotelSummary['hotelRating']} stars", hotel_path(hotel)
+        - else
+          %p
+            Sorry, no hotels could be found.
+  = render partial: 'shared/pagination', locals: { results: @hotels } unless @hotels == nil

@@ -1,0 +1,77 @@
+@import 'globals/variables';
+
+.hotel-module {
+  background-color: white !important;
+  position: relative;
+
+  img {
+    width: 318px;
+    height: 189px;
+  }
+
+  .description {
+    background-color: white;
+    margin-left: -30px;
+  }
+
+  .headline {
+    width: 100%;
+    padding: 15px 0px 0px 15px;
+
+    font-size: 18px;
+    color: black;
+
+    span {
+      display:block;
+      font-size: 14px;
+      padding-top: 10px;
+      color: $grey;
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background-color: darken($lightGrey, 10%);
+    width: 100%;
+    padding: 5px 0px 5px 10px;
+  }
+
+  .info {
+    width: 100%;
+    border-top: 1px solid darken($lightGrey, 10%);
+    border-bottom: 1px solid darken($lightGrey, 10%);
+    padding: 8px 0px 8px 0px;
+    margin-left: 15px;
+    color: black;
+    font-size: 13px;
+  }
+
+  .price {
+    position: absolute;
+    bottom: 20px;
+    left: 348px;
+
+    p {
+      color: $grey;
+      font-size: 12px;
+      margin: 0;
+
+      b {
+        font-size: 20px;
+        color: $primaryColor;
+      }
+    }
+  }
+
+  .follow-details {
+    color: $primaryColor;
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    margin: 0;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+}

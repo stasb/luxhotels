@@ -2,47 +2,25 @@
 %html
   %head
     %title Luxhotels
-    = stylesheet_link_tag    "application", :media => "all"
-    = stylesheet_link_tag    "galleria.classic", :media => "all"
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic"
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Quicksand:300,400,700"
-    = javascript_include_tag "application"
-    = javascript_include_tag "gelleria-1.2.9"
-    = javascript_include_tag "galleria.classic"
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Raleway:400,500,600,700'
     = csrf_meta_tags
-
     = yield :head
-
   %body
-    .header.row-fluid
-      .container-fluid
-        .row-fluid
-          .span4.logo
-            %a{:href => root_path}
-              %h1 Luxhotels
-          .span8
-    .container-fluid
+    = render partial: 'shared/header'
+    .content
       - if flash[:notice]
-        %p.alert.alert-info
-          = flash[:notice]
-        %br
-      - elsif flash[:error]
-        %p.alert.alert-error
-          = flash[:error]
-        %br
-      - if user_signed_in?
-        %p
-          Currently signed in as
-          = current_user.email
-          - if current_user.admin == true
-            %span.text-success
-              \[admin]
-        = link_to "Log out", destroy_user_session_path, :method => "delete"
-        = link_to "admin page", admin_path
-        %br
-      .row-fluid
-        .span12
-          .row-fluid.all-content
-            = yield
-          .footer.row-fluid
+        .container-fluid.flash
+          .row-fluid
+            .span12
+              .alert.alert-success= flash[:notice]
+      - if flash[:error]
+        .container-fluid.flash
+          .row-fluid
+            .span12
+              .alert.alert-error= flash[:error]
+      = yield
+    = render partial: 'shared/footer'
 
+    = javascript_include_tag 'application'
+    = yield :javascript

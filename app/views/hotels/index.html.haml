@@ -1,5 +1,66 @@
-.span3.side-bar
-.span9.main-content
-  .all-deals
-    = render 'hotel_modules'
-  = paginate @hotels
+.container-fluid.home
+  .row-fluid.panel-row
+    .span3.date-picker
+      .date-picker-content
+        %p
+          Search the Finest Hotels
+        = form_tag new_booking_path, method: :get, class: 'date-picker-select' do
+          = text_field_tag :destination, nil, placeholder: 'Destination'
+          = text_field_tag :from, nil, placeholder: 'Check In'
+          = text_field_tag :to, nil,  placeholder: 'Check Out'
+          = submit_tag 'Search', name: nil, class: 'btn'
+    .span9.hotel-leader
+      %a{href: hotel_path(@leader.id)}
+        - b_url = @leader['HotelImages']['HotelImage'][4]['url']
+        - z_url = b_url.sub('_b', '_z')
+        = image_tag z_url, alt: @leader['HotelSummary']['name']
+        .info
+          %p
+            = @leader['HotelSummary']['name'].sub(/,(.*)/, '')
+            = @leader.city.name
+          = image_tag 'right-arrow.png', alt: 'right arrow'
+          .details
+            %p
+              from
+              %b
+                = "#{'$' + number_with_precision(@leader.HotelSummary['lowRate'], :precision => 0)}"
+              per night
+  .row-fluid.panel-row
+    .span8.welcome
+      = image_tag 'travel-circle.png', alt: 'luxhotels travel'
+      .text
+        %p
+          %span Welcome to Luxhotels
+        Luxhotels provides a way to find the highest quality, most luxurious hotels around the world. Browse through a range of premium hotels,
+        and book your stay through the website's easy to use interface.
+    .span4.newsletter
+      %h2
+        Sign up for our Newsletter
+      %p
+        Receive news, offers, and travel ideas across a range of global destinations.
+      = form_tag newsletter_subscribe_path, method: :post, class: 'navbar-form' do
+        = text_field_tag :email, nil, placeholder: 'email@example.com'
+        = submit_tag 'Sign Up', name: nil, class: 'btn'
+  .row-fluid.panel-row
+    .home-heading
+      %p
+        Popular Hotels in
+        %b
+          Asia
+  = render partial: 'shared/panel_section_left', locals: { hotels: @regions.find_by(name: 'Asia').active_hotels }
+
+  .row-fluid.panel-row
+    .home-heading
+      %p
+        Popular Hotels in
+        %b
+          North America
+  = render partial: 'shared/panel_section_right', locals: { hotels: @regions.find_by(name: 'North America').active_hotels }
+
+  .row-fluid.panel-row
+    .home-heading
+      %p
+        Popular Hotels in
+        %span
+          Europe
+  = render partial: 'shared/panel_section_left', locals: { hotels: @regions.find_by(name: 'Europe').active_hotels }

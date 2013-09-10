@@ -1,0 +1,25 @@
+%a{href: hotel_path(hotel)}
+  .row-fluid.hotel-module.panel-row
+    .span6
+      = image_tag hotel.image.thumb_search, alt: hotel['HotelSummary']['name']
+    .span6.description
+      %p.headline
+        = truncate(CGI::unescapeHTML(hotel.HotelSummary['name']).html_safe, length: 40)
+        %span
+          = "#{hotel.city.name}, #{hotel.city.country.name}"
+      .module-divider
+      %p.info
+        = "#{truncate(hotel.HotelSummary['locationDescription'], length: 200)},"
+        rated
+        %b
+          #{hotel.HotelSummary['tripAdvisorRating']}
+        on TripAdvisor
+      .module-divider
+      .price
+        %p
+          from
+          %b
+            = "#{'$' + number_with_precision(hotel.HotelSummary['lowRate'], :precision => 0)}"
+          per night
+      %p.follow-details
+        View Details →

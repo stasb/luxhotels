@@ -1,0 +1,18 @@
+@import 'globals/variables';
+
+.date-picker-select {
+  input[type='text'] {
+    width: 170px;
+    height: 30px;
+    background-color: $lightGrey;
+  }
+
+  input[type='submit'] {
+    width: 184px;
+    background-color: $primaryColor;
+    color: white;
+    border: none;
+
+    @include no-shadow;
+  }
+}

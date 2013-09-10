@@ -12,9 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require_tree .
-//
+//= require jquery-ui
 //= require galleria-1.2.9
 //= require galleria.classic
 //= require_tree .
