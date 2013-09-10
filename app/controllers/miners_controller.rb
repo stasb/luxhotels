@@ -1,6 +1,8 @@
 class MinersController < ApplicationController
+  layout 'admin_layout'
 
   before_filter :authenticate_user!
+
   before_filter do
     redirect_to :new_user_session_path unless current_user && current_user.admin?
   end
@@ -8,8 +10,10 @@ class MinersController < ApplicationController
   def mine_hotels
     @miner = Miner.new(params[:miner])
     if @miner.valid?
-      @build_results = HotelPreview.build_hotels(@miner.citySelect, @miner.limitSelect, @miner.countryCode,\
-                        @miner.starRating)
+      MiningWorker.perform_async(@miner.citySelect, @miner.limitSelect, @miner.countryCode,
+        @miner.starRating)
+
+    redirect_to admin_path, flash: { notice: 'Hotels are building...' }
     else
       render '/admin/index'
     end
@@ -33,8 +37,15 @@ class MinersController < ApplicationController
   end
 
   def destroy_all_hotels
-    Hotel.all.destroy
-    HotelPreview.all.destroy
+    DestructionWorker.perform_async
+    redirect_to root_path, flash: { notice: 'Deleting all hotels...' }
   end
 
+  def build_countries
+    Country.build_list
+  end
+
+  def build_cities
+    City.build_list
+  end
 end

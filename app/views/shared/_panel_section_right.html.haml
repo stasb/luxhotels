@@ -1,0 +1,12 @@
+.row-fluid.panel-row
+  .span4
+    - hotels[1..2].each do |hotel|
+      .row-fluid.panel-row
+        .span12
+          = render partial: 'shared/small_panel', locals: { hotel: hotel }
+  .span8
+    = render partial: 'shared/large_panel', locals: { hotel: hotels[0] }
+.row-fluid.panel-row
+  - hotels[3..5].each do |hotel|
+    .span4
+      = render partial: 'shared/small_panel', locals: { hotel: hotel }

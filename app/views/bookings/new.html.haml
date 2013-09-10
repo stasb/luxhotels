@@ -1,0 +1,27 @@
+.container-fluid
+  .row-fluid
+    .span3.date-picker
+      .date-picker-content
+        %p
+          Search the Finest Hotels
+        = form_tag new_booking_path, method: :get, class: 'date-picker-select' do
+          = text_field_tag :destination, @parameters[:destination], placeholder: 'Destination'
+          = text_field_tag :from, @parameters[:from], placeholder: 'Check In'
+          = text_field_tag :to, @parameters[:to],  placeholder: 'Check Out'
+          = submit_tag 'Search', name: nil, class: 'btn'
+    .span9.search-results
+      .row-fluid
+        .span12
+          %h2
+            = @matches.count
+            Matches Found
+      = render partial: 'shared/pagination', locals: { results: @results } unless @results == nil
+      .row-fluid
+        .span12
+          - if @results != nil
+            - @results.each do |hotel|
+              = render partial: 'hotels/hotel_booking_module', locals: { hotel: hotel }
+          - else
+            %p
+              No hotels could be found for the requested dates.
+      = render partial: 'shared/pagination', locals: { results: @results } unless @results == nil

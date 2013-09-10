@@ -1,75 +1,62 @@
 source 'https://rubygems.org'
-
 ruby '1.9.3'
+
 gem 'rails', '3.2.13'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'mongoid', '~> 3.0.0'
-gem 'bson_ext'
 gem 'active_attr'
-
 gem 'aws'
-gem 'subexec'
-gem 'delayed_job_mongoid'
-gem 'daemons'
-
+gem 'bcrypt-ruby', require: 'bcrypt'
+gem 'bootstrap-sass'
+gem 'bson_ext'
 gem 'carrierwave'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'carrierwave_direct'
-gem 'mini_magick'
-gem 'fog', '~> 1.3.1'
-
-gem 'therubyracer'
-gem 'less-rails'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'client_side_validations'
+gem 'daemons'
+gem 'delayed_job_mongoid'
 gem 'devise'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'rb-fsevent', '~> 0.9.1'
-
-gem 'ruby_parser'
-gem 'hpricot'
+gem 'expedia'
+gem 'fog', '~> 1.3.1'
 gem 'haml'
-gem 'twitter-bootstrap-rails'
+gem 'hashie'
+gem 'hpricot'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'less-rails'
+gem 'libxml-ruby'
+gem 'mini_magick'
+gem 'mongoid', '~> 3.0.0'
+gem 'mongoid_fulltext'
+gem 'nokogiri'
+gem 'rb-fsevent', '~> 0.9.1'
+gem 'ruby_parser'
+gem 'sanitize'
 gem 'sass-rails',   '~> 3.2.3'
+gem 'sidekiq'
+gem 'simple_form'
+gem 'sinatra'
+gem 'slim'
+gem 'subexec'
+gem 'therubyracer'
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
 group :test, :development do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'erb2haml'
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'html2haml'
+  gem 'pry'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'steak'
-  gem 'erb2haml'
-  gem 'html2haml'
+  gem 'shoulda-matchers'
 end
-
-group :test do
-  gem "shoulda-matchers"
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
-  gem "database_cleaner"
-  gem "faker"
-end
-
-gem "bcrypt-ruby", :require => "bcrypt"
-
-gem 'expedia'
-gem 'nokogiri'
-gem 'libxml-ruby'
-gem 'sanitize'
-gem 'kaminari'

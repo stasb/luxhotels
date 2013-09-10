@@ -1,0 +1,23 @@
+.container-fluid
+  .row-fluid
+    .span12
+      %ul.breadcrumb
+        %li
+          = link_to 'Home', root_path
+          %span.divider
+            \/
+        %li.active
+          About
+  .row-fluid.basic-content
+    .span12
+      %h1 About Luxhotels
+    .span12
+      %p
+        Luxhotels is a simple hotel price comparison site that focuses on the luxury travel niche. The website
+        is a Ruby on Rails application that utilises the Expedia API to query a live database of hotels, returning hotel information and room
+        availability. Luxhotels also features its own database of hotels and destinations, generated via the Expedia API.
+      %p
+        Luxhotels was developed by&nbsp;
+        %span>= link_to 'Stas Belkov', 'http://www.linkedin.com/in/stasbelkov', target: '_blank'
+        , a ruby developer from Sydney, Australia.
+

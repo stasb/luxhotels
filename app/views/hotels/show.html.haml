@@ -1,57 +1,86 @@
-- content_for :head do
+- content_for :javascript do
   :javascript
     Galleria.configure({
         overlayBackground: '#e52828'
     });
     Galleria.run('#galleria');
-.span9.main-content.hotel-view
-  .hotel-content
-    %h3
-      = CGI::unescapeHTML(@hotel.HotelSummary['name'])
-      %span
-        \-
-        = @hotel.HotelSummary['city']
 
-    .hotel-divider
-    .image-carousel
-      #galleria
-        - images = @hotel.HotelImages['HotelImage']
-        - images.each do |image|
-          %img{:src => image['url']}
-    .hotel-divider
-    .hotel-description
-      = CGI::unescapeHTML(@hotel.HotelDetails['propertyDescription']).html_safe
-    .hotel-divider
-    .hotel-description
-      %b Hotel Policy:
-      %br
-      = CGI::unescapeHTML(@hotel.HotelDetails['hotelPolicy']).html_safe
-    .hotel-divider
-    .hotel-description
-      %b Room Types:
-      %br
-      - room_types = @hotel.RoomTypes['RoomType']
-      %ul
-      - if room_types.class == Array
-        - room_types.each do |type|
-          %li
-            = type['description'].to_s
-      - else
+.container-fluid
+  .row-fluid
+    .span12
+      %ul.breadcrumb
         %li
-          = room_types['description']
-    .hotel-divider
-    .hotel-description
-      %b
-        Number of floors: #{@hotel.HotelDetails['numberOfFloors']},
-      %b
-        Number of rooms: #{@hotel.HotelDetails['numberOfRooms']}
-      %br
+          = link_to 'Home', root_path
+          %span.divider
+            \/
+        %li
+          = link_to 'Countries', countries_path
+          %span.divider
+            \/
+        %li
+          = link_to @country.name, country_path(@country)
+          %span.divider
+            \/
+        %li
+          = link_to @city.name, city_path(@city)
+          %span.divider
+            \/
+        %li.active
+          = CGI::unescapeHTML(@hotel.HotelSummary['name'])
+  .row-fluid
+    .span9.main-content.hotel-view
+      .hotel-content
+        %h2
+          = CGI::unescapeHTML(@hotel.HotelSummary['name'])
+          %span
+            = "#{@hotel.HotelSummary['city'] + ','}"
+            = @hotel.city.country.name
+        .price-info
+          %p
+            - if user_signed_in?
+              - if current_user['admin']
+                = link_to 'Delete Hotel', hotel_path(@hotel), method: :delete
+            from
+            %b
+              = "#{'$' + number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)}"
+            per night
+        .image-carousel
+          #galleria
+            - images = @hotel.HotelImages['HotelImage']
+            - images.each do |image|
+              %img{:src => image['url']}
+        .hotel-divider
+        .hotel-description
+          = CGI::unescapeHTML(@hotel.HotelDetails['propertyDescription']).html_safe
+        .hotel-description
+          %p
+            %b Hotel Policy:
+            %br
+            = CGI::unescapeHTML(@hotel.HotelDetails['hotelPolicy']).html_safe
+        .hotel-description
+          %p
+            %b Room Types:
+            %br
+            - room_types = @hotel.RoomTypes['RoomType']
+            %ul
+            - if room_types.class == Array
+              - room_types.each do |type|
+                %li
+                  = type['description'].to_s
+            - else
+              %li
+                = room_types['description']
+        .hotel-description
+          %p
+            Number of floors: #{@hotel.HotelDetails['numberOfFloors']},
+            Number of rooms: #{@hotel.HotelDetails['numberOfRooms']}
 
-.span3.side-bar
-  .side-bar-content
-    .price
-      %p
-        from
-        %span
-          USD$
-          = number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)
+    .span3.date-picker
+      .date-picker-content
+        %p
+          Search the Finest Hotels
+        = form_tag new_booking_path, method: :get, class: 'date-picker-select' do
+          = text_field_tag :destination, @hotel.city.name, placeholder: 'Destination'
+          = text_field_tag :from, nil, placeholder: 'Check In'
+          = text_field_tag :to, nil,  placeholder: 'Check Out'
+          = submit_tag 'Search', name: nil, class: 'btn'

@@ -1,0 +1,19 @@
+$primaryColor: #ff3588;
+$secondaryColor: #01B0F0;
+$tertiaryColor: #AEEE00;
+$grey: #888888;
+$lightGrey: #f1f1f1;
+
+@mixin panel-background {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+@mixin no-shadow {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
