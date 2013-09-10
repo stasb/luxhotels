@@ -12,6 +12,8 @@ Luxhotels::Application.routes.draw do
 
   resources :bookings
 
+  match '/redirect/*hotel_url', to: 'redirects#transfer', as: 'redirect'
+
   get '/search', to: 'search#search', as: 'search'
 
   match '/city/:city_id', to: 'locations#city', as: 'city'
