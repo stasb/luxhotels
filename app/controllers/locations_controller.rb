@@ -26,6 +26,6 @@ class LocationsController < ApplicationController
 
   def city
     @city = City.find_by(id: params[:city_id])
-    @hotels = @city.hotels.all
+    @hotels = @city.hotels.all.page(params[:page]).per(10)
   end
 end

@@ -31,3 +31,4 @@
         - else
           %p
             Sorry, no hotels could be found.
+  = render partial: 'shared/pagination', locals: { results: @hotels } unless @hotels == nil
