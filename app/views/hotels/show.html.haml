@@ -37,6 +37,9 @@
             = @hotel.city.country.name
         .price-info
           %p
+            - if user_signed_in?
+              - if current_user['admin']
+                = link_to 'Delete Hotel', hotel_path(@hotel), method: :delete
             from
             %b
               = "#{'$' + number_with_precision(@hotel.HotelSummary['lowRate'], :precision => 0)}"
